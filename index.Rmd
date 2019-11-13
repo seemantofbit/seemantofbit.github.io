@@ -1,0 +1,18 @@
+---
+title: "My Simple & First Website on GitHub repository"
+author: "Seemant Srivastava"
+date: "11/14/2019"
+output: html_document
+---
+
+# Interesting information about me:
+#### My name is Seemant Srivastava.
+#### I was born in India.
+#### My interests are in Data Science and Data Engineering.
+#### I work as a Senior Data Scientist at Verizon in Irving, Texas.
+#### I did my undegraduate degree in Bachelors in Engineering in Computer Science from India.
+#### Fun fact about me is that I like music and sometimes do DJ for leisure.
+
+
+### Note: "The other tabs represent work / analyses that I have completed.  Please check them out!"
+
