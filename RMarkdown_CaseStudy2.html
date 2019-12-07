@@ -1,0 +1,2000 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Presented by: Seemant Srivastava" />
+
+
+<title>DDS-Analytics Presentation on Case Study for Employee Attrition at Frito Lay</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">My Website</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">About Me</a>
+</li>
+<li>
+  <a href="Beer-Study.html">Case Study1 on Beer</a>
+</li>
+<li>
+  <a href="RMarkdown_CaseStudy2.html">Case Study2 on Attrition</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">DDS-Analytics Presentation on Case Study for Employee Attrition at Frito Lay</h1>
+<h4 class="author">Presented by: Seemant Srivastava</h4>
+<h4 class="date">Date: December 5, 2019</h4>
+
+</div>
+
+
+<div id="please-visit-my-following-links-for-detailed-presentation-and-documentation-of-my-case-study-on-employee-attrition-" class="section level5">
+<h5>Please visit my following links for detailed presentation and documentation of my Case study on Employee Attrition:-</h5>
+</div>
+<div id="youtube-video-link-httpsyoutu.bei5hs0tr_zco" class="section level5">
+<h5>YouTube video link: <a href="https://youtu.be/i5hs0tR_zCo" class="uri">https://youtu.be/i5hs0tR_zCo</a></h5>
+</div>
+<div id="github-website-link-httpsseemantofbit.github.io" class="section level5">
+<h5>GitHub website link: <a href="https://seemantofbit.github.io/" class="uri">https://seemantofbit.github.io/</a></h5>
+</div>
+<div id="rshiny-app-link-httpsseemantsrivastava.shinyapps.ioattrition" class="section level5">
+<h5>RShiny App link: <a href="https://seemantsrivastava.shinyapps.io/Attrition/" class="uri">https://seemantsrivastava.shinyapps.io/Attrition/</a></h5>
+</div>
+<div id="github-repository-link-httpsgithub.comseemantofbitcasestudy2dds" class="section level5">
+<h5>GitHub repository link: <a href="https://github.com/seemantofbit/CaseStudy2DDS" class="uri">https://github.com/seemantofbit/CaseStudy2DDS</a></h5>
+</div>
+<div id="good-afternoon-mr.ceo-and-mr.cfo-of-frito-lay" class="section level2">
+<h2>Good Afternoon, Mr. CEO and Mr. CFO of Frito Lay,</h2>
+<div id="introduction" class="section level3">
+<h3>Introduction:</h3>
+<div id="as-a-consultant-for-the-ddsanalytics-i-have-completed-the-analysis-of-the-dataset-on-employee-attrition-that-you-have-provided-to-me.-i-have-found-some-interesting-insights-that-will-prove-to-assist-your-hr-team-on-the-talent-management." class="section level4">
+<h4>As a consultant for the DDSAnalytics I have completed the analysis of the dataset on employee attrition that you have provided to me. I have found some interesting insights that will prove to assist your HR team on the talent management.</h4>
+</div>
+<div id="i-have-been-provided-with-the-employee-attrition-data-and-build-a-model-to-predict-the-attrition.-the-data-you-provided-me-on-employee-attrition-contains-information-about-870-past-employees-who-attrit-from-your-company-or-were-retained.-there-are-36-features-available-in-the-dataset.-here-are-the-answers-to-important-insights-and-analysis-made-on-the-employee-attrition-dataset." class="section level4">
+<h4>I have been provided with the employee attrition data and build a model to predict the attrition. The data you provided me on Employee Attrition contains information about 870 past employees who attrit from your company or were retained. There are 36 features available in the dataset. Here are the answers to important insights and analysis made on the employee attrition dataset.</h4>
+</div>
+</div>
+</div>
+<div id="initial-analysis-of-the-employee-attrition-dataset" class="section level2">
+<h2>Initial Analysis of the employee attrition dataset:</h2>
+<div id="summary" class="section level3">
+<h3>Summary:</h3>
+<div id="dataset-structure-870-observations-rows-36-features-variables" class="section level4">
+<h4>Dataset Structure: 870 observations (rows), 36 features (variables)</h4>
+</div>
+<div id="missing-data-luckily-for-us-there-is-no-missing-data-this-will-make-it-easier-to-work-with-the-dataset." class="section level4">
+<h4>Missing Data: Luckily for us, there is no missing data, this will make it easier to work with the dataset.</h4>
+</div>
+<div id="data-type-we-only-have-two-datatypes-in-this-dataset-factors-and-integers" class="section level4">
+<h4>Data Type: We only have two datatypes in this dataset: factors and integers</h4>
+</div>
+<div id="label-attrition-is-the-label-in-our-dataset-and-we-would-like-to-find-out-why-employees-are-leaving-the-organization" class="section level4">
+<h4>Label “Attrition” is the label in our dataset and we would like to find out why employees are leaving the organization!</h4>
+</div>
+<div id="imbalanced-dataset-730-84-of-cases-employees-did-not-leave-the-organization-while-140-16-of-cases-did-leave-the-organization-making-our-dataset-to-be-considered-imbalanced-since-more-people-stay-in-the-organization-than-they-actually-leave." class="section level4">
+<h4>Imbalanced dataset: 730 (84% of cases) employees did not leave the organization while 140 (16% of cases) did leave the organization making our dataset to be considered imbalanced since more people stay in the organization than they actually leave.</h4>
+<pre class="r"><code>#check for NA values
+table(is.na(employee))</code></pre>
+<pre><code>## 
+## FALSE 
+## 31320</code></pre>
+<pre class="r"><code># Checking the missing value
+sapply(employee, function(x) sum(is.na(x)))</code></pre>
+<pre><code>##                       ID                      Age                Attrition 
+##                        0                        0                        0 
+##           BusinessTravel                DailyRate               Department 
+##                        0                        0                        0 
+##         DistanceFromHome                Education           EducationField 
+##                        0                        0                        0 
+##            EmployeeCount           EmployeeNumber  EnvironmentSatisfaction 
+##                        0                        0                        0 
+##                   Gender               HourlyRate           JobInvolvement 
+##                        0                        0                        0 
+##                 JobLevel                  JobRole          JobSatisfaction 
+##                        0                        0                        0 
+##            MaritalStatus            MonthlyIncome              MonthlyRate 
+##                        0                        0                        0 
+##       NumCompaniesWorked                   Over18                 OverTime 
+##                        0                        0                        0 
+##        PercentSalaryHike        PerformanceRating RelationshipSatisfaction 
+##                        0                        0                        0 
+##            StandardHours         StockOptionLevel        TotalWorkingYears 
+##                        0                        0                        0 
+##    TrainingTimesLastYear          WorkLifeBalance           YearsAtCompany 
+##                        0                        0                        0 
+##       YearsInCurrentRole  YearsSinceLastPromotion     YearsWithCurrManager 
+##                        0                        0                        0</code></pre>
+<pre class="r"><code>#check for duplicated values
+sum(duplicated(employee)) </code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre class="r"><code>#see data frame dimensions and column data types
+str(employee)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    870 obs. of  36 variables:
+##  $ ID                      : int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ Age                     : int  32 40 35 32 24 27 41 37 34 34 ...
+##  $ Attrition               : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ BusinessTravel          : Factor w/ 3 levels &quot;Non-Travel&quot;,&quot;Travel_Frequently&quot;,..: 3 3 2 3 2 2 3 3 3 2 ...
+##  $ DailyRate               : int  117 1308 200 801 567 294 1283 309 1333 653 ...
+##  $ Department              : Factor w/ 3 levels &quot;Human Resources&quot;,..: 3 2 2 3 2 2 2 3 3 2 ...
+##  $ DistanceFromHome        : int  13 14 18 1 2 10 5 10 10 10 ...
+##  $ Education               : int  4 3 2 4 1 2 5 4 4 4 ...
+##  $ EducationField          : Factor w/ 6 levels &quot;Human Resources&quot;,..: 2 4 2 3 6 2 4 2 2 6 ...
+##  $ EmployeeCount           : int  1 1 1 1 1 1 1 1 1 1 ...
+##  $ EmployeeNumber          : int  859 1128 1412 2016 1646 733 1448 1105 1055 1597 ...
+##  $ EnvironmentSatisfaction : int  2 3 3 3 1 4 2 4 3 4 ...
+##  $ Gender                  : Factor w/ 2 levels &quot;Female&quot;,&quot;Male&quot;: 2 2 2 1 1 2 2 1 1 2 ...
+##  $ HourlyRate              : int  73 44 60 48 32 32 90 88 87 92 ...
+##  $ JobInvolvement          : int  3 2 3 3 3 3 4 2 3 2 ...
+##  $ JobLevel                : int  2 5 3 3 1 3 1 2 1 2 ...
+##  $ JobRole                 : Factor w/ 9 levels &quot;Healthcare Representative&quot;,..: 8 6 5 8 7 5 7 8 9 1 ...
+##  $ JobSatisfaction         : int  4 3 4 4 4 1 3 4 3 3 ...
+##  $ MaritalStatus           : Factor w/ 3 levels &quot;Divorced&quot;,&quot;Married&quot;,..: 1 3 3 2 3 1 2 1 2 2 ...
+##  $ MonthlyIncome           : int  4403 19626 9362 10422 3760 8793 2127 6694 2220 5063 ...
+##  $ MonthlyRate             : int  9250 17544 19944 24032 17218 4809 5561 24223 18410 15332 ...
+##  $ NumCompaniesWorked      : int  2 1 2 1 1 1 2 2 1 1 ...
+##  $ Over18                  : Factor w/ 1 level &quot;Y&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ OverTime                : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 2 1 2 2 2 1 ...
+##  $ PercentSalaryHike       : int  11 14 11 19 13 21 12 14 19 14 ...
+##  $ PerformanceRating       : int  3 3 3 3 3 4 3 3 3 3 ...
+##  $ RelationshipSatisfaction: int  3 1 3 3 3 3 1 3 4 2 ...
+##  $ StandardHours           : int  80 80 80 80 80 80 80 80 80 80 ...
+##  $ StockOptionLevel        : int  1 0 0 2 0 2 0 3 1 1 ...
+##  $ TotalWorkingYears       : int  8 21 10 14 6 9 7 8 1 8 ...
+##  $ TrainingTimesLastYear   : int  3 2 2 3 2 4 5 5 2 3 ...
+##  $ WorkLifeBalance         : int  2 4 3 3 3 2 2 3 3 2 ...
+##  $ YearsAtCompany          : int  5 20 2 14 6 9 4 1 1 8 ...
+##  $ YearsInCurrentRole      : int  2 7 2 10 3 7 2 0 1 2 ...
+##  $ YearsSinceLastPromotion : int  0 4 2 5 1 1 0 0 0 7 ...
+##  $ YearsWithCurrManager    : int  3 9 2 7 3 7 3 0 0 7 ...</code></pre>
+<pre class="r"><code># remove some variable whose value is not changing. So standard deviation of that variable is zero. So it is not Significant for analysis. Those variable are ID, Employee Count, Employee Number, Over18, StandardHours
+employee &lt;- employee[, -c(1,10,11,23,28)]</code></pre>
+</div>
+</div>
+</div>
+<div id="eda-exploratory-data-analysis" class="section level2">
+<h2>EDA (Exploratory Data Analysis):</h2>
+<div id="before-modelling-we-need-to-find-out-the-variables-that-could-be-important-in-predicting-the-outcome.-therefore-we-do-some-univariate-and-bivariate-data-analysis-to-discover-insights-and-try-to-correlate-the-data." class="section level4">
+<h4>Before modelling, we need to find out the variables that could be important in predicting the outcome. Therefore we do some univariate and bivariate data analysis to discover insights and try to correlate the data.</h4>
+</div>
+<div id="correlation-matrix-plot-is-used-to-predict-correlation-between-numeric-variables.-some-of-the-highly-correlated-variables." class="section level4">
+<h4>Correlation Matrix Plot is used to predict correlation between numeric variables. Some of the highly correlated variables.</h4>
+<div id="age-variable-is-correlated-with-totalworkingyears" class="section level5">
+<h5>1.) Age variable is correlated with TotalWorkingYears</h5>
+</div>
+<div id="totalworkingyears-correlated-with-monthlyincome" class="section level5">
+<h5>2.) TotalWorkingYears correlated with MonthlyIncome</h5>
+</div>
+<div id="yearswithcurrmanager-also-correlated-with-yearsatcompany" class="section level5">
+<h5>3.) YearsWithCurrManager also correlated with YearsAtCompany</h5>
+</div>
+<div id="yearswithcurrmanger-correlated-with-yearsincurrentrole" class="section level5">
+<h5>4.) YearsWithCurrManger correlated with YearsInCurrentRole</h5>
+</div>
+<div id="yearsincurrentrole-correlated-with-yearsatcompany" class="section level5">
+<h5>5.) YearsInCurrentRole correlated with YearsAtCompany</h5>
+</div>
+<div id="from-the-correlation-plot-we-see-that-the-predictor-variables-are-less-correlated-to-each-other.-the-variables-years-at-company-years-in-currentrole-years-since-last-promotionyears-with-current-manager-total-working-years-each-have-negative-correlation." class="section level5">
+<h5>From the correlation plot, we see that the predictor variables are less correlated to each other. The variables years at company, years in currentrole, years since last promotion,years with current manager, total working years each have negative correlation.</h5>
+<pre class="r"><code># correlation between numeric variable
+numeric=employee %&gt;% dplyr::select(Age,DailyRate,DistanceFromHome,JobLevel,HourlyRate,MonthlyIncome,MonthlyRate,PercentSalaryHike,YearsAtCompany,YearsInCurrentRole,YearsSinceLastPromotion,YearsWithCurrManager,TotalWorkingYears)
+corrplot(cor(numeric),main = &#39;\n\n Correlation plot for Numeric Variables&#39;,method=&quot;circle&quot;,type=&quot;upper&quot;)</code></pre>
+<p><img src="RMarkdown_CaseStudy2_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+</div>
+<div id="number-of-employees-who-are-leaving-from-the-company" class="section level4">
+<h4>Number of employees who are leaving from the company:</h4>
+<div id="the-dataset-is-imbalanced-with-84-of-the-representation-from-no-attrition-and-only-16-is-represented-by-attrition-group.therefore-a-baseline-prediction-would-predict-all-the-respondents-as-no-attrition.-later-on-in-the-modeling-section-we-will-address-the-imbalanced-data-using-the-smote-technique." class="section level5">
+<h5>The dataset is imbalanced with ~84% of the representation from no attrition and only ~16% is represented by attrition group.Therefore a baseline prediction would predict all the respondents as no attrition. Later on in the modeling section we will address the imbalanced data using the SMOTE technique.</h5>
+<pre class="r"><code>### let&#39;s see what percentage of people are leaving
+employeeLeaving &lt;- employee %&gt;% group_by(Attrition) %&gt;% summarise(n = n())
+employeeLeaving</code></pre>
+<pre><code>## # A tibble: 2 x 2
+##   Attrition     n
+##   &lt;fct&gt;     &lt;int&gt;
+## 1 No          730
+## 2 Yes         140</code></pre>
+<pre class="r"><code>employee %&gt;% group_by(Attrition) %&gt;% tally() %&gt;% ggplot(aes(x = Attrition, y = n,fill=Attrition)) + geom_bar(stat = &quot;identity&quot;) + theme_minimal()+ labs(x=&quot;Attrition&quot;, y=&quot;Count of Attrition&quot;)+ggtitle(&quot;Number of Employees Attrit&quot;)+
+geom_text(aes(label = n), vjust = -0.5, position = position_dodge(0.9))</code></pre>
+<p><img src="RMarkdown_CaseStudy2_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+</div>
+<div id="income-levels-for-the-attrition-employees" class="section level4">
+<h4>Income levels for the attrition employees:</h4>
+<div id="the-density-plot-clearly-shows-on-a-very-high-level-that-employees-with-lower-monthly-income-of-less-than-5000-have-higher-attrition-levels." class="section level5">
+<h5>The density plot clearly shows on a very high level that employees with lower monthly income of less than $5000 have higher attrition levels.</h5>
+<pre class="r"><code># check income levels
+ggplot(employee, aes(x = MonthlyIncome, fill = Attrition)) + 
+  geom_density(alpha = 0.6) +
+  labs(x = &quot;Monthly Income&quot;, y = &quot;&quot;) +
+  ggtitle(&quot;Attrition by income level&quot;) +
+  theme_classic()</code></pre>
+<p><img src="RMarkdown_CaseStudy2_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+</div>
+<div id="attrition-vs-department" class="section level4">
+<h4>Attrition Vs Department:</h4>
+<div id="percentage-of-people-who-are-leaving-from-their-departments" class="section level5">
+<h5>Percentage of people who are leaving from their departments:</h5>
+</div>
+<div id="the-amount-of-work-and-stress-levels-obviously-depends-on-the-department-a-person-works-in-this-could-be-a-good-indicator-of-attrition-levels." class="section level5">
+<h5>The amount of work and stress levels obviously depends on the department a person works in, this could be a good indicator of attrition levels.</h5>
+</div>
+<div id="on-comparing-departmentwisewe-can-conclude-that-hr-has-seen-only-a-marginal-high-in-turnover-rates-whereas-the-numbers-are-significant-in-sales-department-with-attrition-turnover-rates-of-42.1.the-attrition-levels-are-not-appreciable-in-r-d-where-53.6-have-recorded-attrition." class="section level5">
+<h5>On comparing departmentwise,we can conclude that HR has seen only a marginal high in turnover rates whereas the numbers are significant in sales department with attrition turnover rates of 42.1%.The attrition levels are not appreciable in R &amp; D where 53.6% have recorded attrition.</h5>
+<pre class="r"><code>cat(&quot;There are&quot;,length(unique(employee$Department)),&quot;unique departments in the dataset&quot;)</code></pre>
+<pre><code>## There are 3 unique departments in the dataset</code></pre>
+<pre class="r"><code>ggplot(employee,aes(x=Department,group=Attrition))+geom_bar(aes(y=..prop..,fill=factor(..x..)),stat=&quot;count&quot;)+facet_grid(~Attrition)+theme(axis.text.x=element_text(angle=90,vjust=0.5),legend.position=&quot;none&quot;,plot.title=element_text(size=16,hjust=0.5))+labs(x=&quot;Department&quot;,y=&quot;Percentage&quot;,title=&quot;Attrition  % Vs Department&quot;)+ geom_text(aes(label = scales::percent(..prop..), y = ..prop.. ),stat= &quot;count&quot;,vjust =-.5) +scale_x_discrete(labels=function(x) str_wrap(x,width=10))+scale_fill_brewer(palette=&quot;Set2&quot;)</code></pre>
+<p><img src="RMarkdown_CaseStudy2_files/figure-html/unnamed-chunk-5-1.png" width="960" /></p>
+</div>
+</div>
+<div id="additional-check-for-the-attrition-levels-departmentwise" class="section level4">
+<h4>Additional check for the attrition levels departmentwise:</h4>
+<div id="sales-has-seen-higher-attrition-levels-about-21.6-followed-by-hr17.1." class="section level5">
+<h5>Sales has seen higher attrition levels (about 21.6%) followed by HR(17.1%).</h5>
+<pre class="r"><code>ggplot(employee,aes(x=Attrition,group=Department))+geom_bar(aes(y=..prop..,fill=factor(..x..)),stat=&quot;count&quot;)+facet_grid(~Department)+theme(axis.text.x=element_text(angle=90,vjust=0.5),legend.position=&quot;none&quot;,plot.title=element_text(size=16,hjust=0.5))+labs(x=&quot;Attrition&quot;,y=&quot;Percentage&quot;,title=&quot;Department Vs Attrition %&quot;)+ geom_text(aes(label = scales::percent(..prop..), y = ..prop.. ),stat= &quot;count&quot;,vjust =-.5) +scale_x_discrete(labels=function(x) str_wrap(x,width=10))+scale_fill_brewer(palette=&quot;Set3&quot;)</code></pre>
+<p><img src="RMarkdown_CaseStudy2_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+</div>
+<div id="attrition-vs-marital-status" class="section level4">
+<h4>Attrition Vs Marital Status:</h4>
+<div id="to-check-whether-there-is-a-relationship-between-attrition-levels-and-marital-status" class="section level5">
+<h5>To check whether there is a relationship between attrition levels and marital status:</h5>
+</div>
+<div id="from-the-plotit-is-understood-that-irrespective-of-the-marital-statusthere-are-large-people-who-stay-with-the-company-and-do-not-leave.thereforemarital-status-is-a-weak-predictor-of-attrition." class="section level5">
+<h5>From the plot,it is understood that irrespective of the marital status,there are large people who stay with the company and do not leave.Therefore,marital status is a weak predictor of attrition.</h5>
+<pre class="r"><code>## Attrition Vs Marital Status:
+ggplot(employee,aes(MaritalStatus,..count..,fill=Attrition))+geom_bar(position=position_dodge())+theme_few()+theme(legend.position=&quot;bottom&quot;,plot.title=element_text(hjust=0.5,size=16))+labs(title=&quot;Attrition Count Vs Marital Status&quot;)</code></pre>
+<p><img src="RMarkdown_CaseStudy2_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+</div>
+<div id="attrition-vs-marital-status-vs-age-vs-monthly-income" class="section level4">
+<h4>Attrition Vs Marital Status Vs age Vs monthly income:</h4>
+</div>
+<div id="including-age-and-monthly-income-and-then-doing-the-analysis-for-the-attrition-employees" class="section level4">
+<h4>Including age and monthly income and then doing the analysis for the attrition employees:</h4>
+<div id="the-trend-is-linear-for-age-and-monthly-income-across-the-marital-status." class="section level5">
+<h5>The trend is linear for age and monthly income across the marital status.</h5>
+</div>
+<div id="it-is-observed-that-attrition-is-more-pronounced-with-single-people-across-the-age-groups." class="section level5">
+<h5>It is observed that attrition is more pronounced with “single” people across the age groups.</h5>
+</div>
+<div id="married-people-having-lower-salary-attrit-more-whereas-divorced-people-have-not-attrited-much." class="section level5">
+<h5>Married people having lower salary attrit more whereas divorced people have not attrited much.</h5>
+<pre class="r"><code># Attrition Vs Marital Status Vs age Vs monthly income
+ggplot(employee,aes(Age,MonthlyIncome,size=Age,col=factor(Attrition)))+geom_point(alpha=0.3)+theme_minimal()+facet_wrap(~MaritalStatus)+labs(x=&quot;Age&quot;,y=&quot;MonthlyIncome&quot;,title=&quot;Attrition Level Comparision &quot;,subtitle=&quot;How attrition is observed with change in Age,Income and MaritalStatus&quot;,col=&quot;Attrition&quot;)+theme(legend.position=&quot;bottom&quot;,plot.title=element_text(size=16,hjust=0.5),plot.subtitle = element_text(size=10))+scale_color_brewer(palette=&quot;Set2&quot;)</code></pre>
+<p><img src="RMarkdown_CaseStudy2_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+</div>
+<div id="attrition-vs-distance-from-home" class="section level4">
+<h4>Attrition Vs Distance From Home:</h4>
+<div id="there-is-a-higher-number-of-people-who-reside-near-to-offices-and-hence-the-attrition-levels-are-lower-for-distance-10-.with-the-increase-in-distance-from-homethe-attrition-curve-overtakes-the-no-attrition-curve-which-is-expected." class="section level5">
+<h5>There is a higher number of people who reside near to offices and hence the attrition levels are lower for distance &lt;10 .With the increase in distance from home,the attrition curve overtakes the no attrition curve which is expected.</h5>
+<pre class="r"><code>ggplot(employee,aes(DistanceFromHome,fill=Attrition))+geom_density(alpha=0.5)+theme_few()+theme(legend.position=&quot;bottom&quot;,plot.title=element_text(hjust=0.5,size=16))+labs(x=&quot;Distance from Home&quot;,title=&quot;Attrition Vs Distance From Home&quot;)+scale_fill_canva(palette=&quot;Bold feature colors&quot;)</code></pre>
+<p><img src="RMarkdown_CaseStudy2_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+</div>
+</div>
+<div id="attrition-vs-payrates" class="section level4">
+<h4>Attrition Vs Payrates:</h4>
+<div id="it-is-wise-to-draw-a-boxplot-to-understand-the-monthly-income-and-how-it-affects-the-attrition-rate.we-suspect-that-those-who-have-been-paid-less-will-turnover." class="section level5">
+<h5>It is wise to draw a boxplot to understand the monthly income and how it affects the attrition rate.We suspect that those who have been paid less will turnover.</h5>
+<pre class="r"><code>ggplot(employee,aes(Attrition,MonthlyIncome,fill=Attrition))+geom_boxplot()+theme_few()+theme(plot.title=element_text(hjust=0.5),legend.position=&quot;bottom&quot;)+coord_flip()+labs(title=&quot;Attrition Vs Monthly Income&quot;)</code></pre>
+<p><img src="RMarkdown_CaseStudy2_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+</div>
+<div id="attrition-vs-education" class="section level4">
+<h4>Attrition Vs Education:</h4>
+<div id="there-are-more-people-with-a-bachelors-degree-followed-by-masters-degree.it-is-seen-that-the-attrition-levels-are-not-pronounced-across-education-levels-but-the-assumption-is-that-people-with-higher-education-expect-greater-challenges-to-work-on-and-if-they-dont-find-that-this-leads-to-lower-satisfaction-levels-and-consequently-to-attrition." class="section level5">
+<h5>There are more people with a bachelors degree followed by masters degree.It is seen that the attrition levels are not pronounced across education levels, but the assumption is that people with higher education expect greater challenges to work on and if they dont find that this leads to lower satisfaction levels and consequently to attrition.</h5>
+<pre class="r"><code>temp = employee %&gt;% mutate(Education=factor(Education)) %&gt;% mutate(Education=fct_recode(Education,&#39;Below College&#39;=&#39;1&#39;,&#39;College&#39;=&#39;2&#39;,&#39;Bachelor&#39;=&#39;3&#39;,&#39;Master&#39;=&#39;4&#39;,&#39;Doctor&#39;=&#39;5&#39;))
+ggplot(temp,aes(Education,fill=Attrition))+geom_bar(stat=&quot;count&quot;,aes(y=..count..),position=position_dodge())+theme_few()+theme_few()+theme(legend.position=&quot;bottom&quot;,plot.title=element_text(hjust=0.5,size=16),axis.text.x = element_text(angle=90))+labs(x=&quot;Education Level&quot;,y=&quot;Count&quot;,title=&quot;Trend of Attrition with Education Level&quot;)+scale_fill_canva(palette=&quot;Golden afternoon&quot;)</code></pre>
+<p><img src="RMarkdown_CaseStudy2_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+</div>
+</div>
+<div id="attrition-vs-totalworkingyears" class="section level4">
+<h4>Attrition Vs TotalWorkingYears:</h4>
+<div id="from-the-plotit-is-seen-that-people-having-less-than-8-years-of-experience-and-have-switched-over-to-many-companies-have-experienced-a-significant-hike-in-the-salary-levels-compared-to-those-who-stay-in-the-company." class="section level5">
+<h5>From the plot,it is seen that people having less than ~8 years of experience and have switched over to many companies have experienced a significant hike in the salary levels compared to those who stay in the company.</h5>
+<pre class="r"><code>ggplot(employee,aes(Attrition,TotalWorkingYears,fill=Attrition))+geom_boxplot()+theme(legend.position=&quot;bottom&quot;,plot.title=element_text(hjust=0.5))+labs(x=&quot;Attrition&quot;,y=&quot;Years of Experience&quot;,title=&quot;Attrition trend with number of years of experience&quot;)+coord_flip()</code></pre>
+<p><img src="RMarkdown_CaseStudy2_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+</div>
+</div>
+<div id="attrition-vs-job-satisfaction" class="section level4">
+<h4>Attrition Vs Job Satisfaction:</h4>
+<div id="as-expectedpeople-with-low-satisfaction-have-left-the-company-27.1-in-large-number-.what-is-surprising-is-out-of-those-who-leave-about-30.7-have-experience-high-job-satisfaction.thereforethere-should-be-some-other-factor-which-triggers-their-exit-from-the-present-company." class="section level5">
+<h5>As expected,people with low satisfaction have left the company (27.1%) in large number .What is surprising is ,out of those who leave about 30.7% have experience high job satisfaction.Therefore,there should be some other factor which triggers their exit from the present company.</h5>
+</div>
+<div id="there-is-a-visible-trend-in-the-category-of-people-who-do-not-leave-whereas-this-is-not-so-in-the-case-of-people-who-leave.the-attrition-group-is-most-represented-by-people-having-high-and-very-high-job-satisfaction." class="section level5">
+<h5>There is a visible trend in the category of people who do not leave whereas this is not so in the case of people who leave.The attrition group is most represented by people having high and very high job satisfaction.</h5>
+<pre class="r"><code>temp = employee %&gt;% mutate(JobSatisfaction=factor(JobSatisfaction)) %&gt;% mutate(JobSatisfaction=fct_recode(JobSatisfaction,&quot;Low&quot;=&quot;1&quot;,&quot;Medium&quot;=&quot;2&quot;,&quot;High&quot;=&quot;3&quot;,&quot;Very High&quot;=&quot;4&quot;))
+ggplot(temp,aes(x=JobSatisfaction,group=Attrition))+geom_bar(stat=&quot;count&quot;,aes(y=..prop..,fill=factor(..x..)))+labs(x=&quot;Job Satisfaction&quot;,y=&quot;Percentage&quot;,title=&quot;Job Satisfaction Vs Attrition Rates&quot;)+facet_wrap(~Attrition)+theme_few()+theme(legend.position=&quot;none&quot;,plot.title=element_text(hjust=0.5,size=14))+geom_text(aes(label=scales::percent(..prop..),y=..prop..),stat=&quot;count&quot;,vjust=-0.5)</code></pre>
+<p><img src="RMarkdown_CaseStudy2_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+</div>
+</div>
+<div id="attrition-vs-worklife-balance" class="section level4">
+<h4>Attrition Vs Worklife balance:</h4>
+<div id="as-seen-with-the-other-categorical-variableshere-too-we-find-that-people-having-better-work-life-balance-leave-the-company-whereas-about-61.9-who-have-experienced-better-work-life-balance-stay-with-the-company.we-now-continue-with-our-last-categorical-variable-environment-satisfaction." class="section level5">
+<h5>As seen with the other categorical variables,here too we find that people having better work life balance leave the company whereas about 61.9% who have experienced better work life balance stay with the company.We now continue with our last categorical variable-Environment satisfaction.</h5>
+<pre class="r"><code>temp= employee %&gt;% mutate(WorkLifeBalance=factor(WorkLifeBalance)) %&gt;% mutate(WorkLifeBalance=fct_recode(WorkLifeBalance,&quot;Bad&quot;=&quot;1&quot;,&quot;Good&quot;=&quot;2&quot;,&quot;Better&quot;=&quot;3&quot;,&quot;Best&quot;=&quot;4&quot;))
+ggplot(temp,aes(x=WorkLifeBalance,group=Attrition))+geom_bar(stat=&quot;count&quot;,aes(y=..prop..,fill=factor(..x..)))+labs(x=&quot;WorkLifeBalance&quot;,y=&quot;Percentage&quot;,title=&quot;Worklifebalance Vs Attrition Rates&quot;)+facet_wrap(~Attrition)+theme_few()+theme(legend.position=&quot;none&quot;,plot.title=element_text(hjust=0.5,size=14))+geom_text(aes(label=scales::percent(..prop..),y=..prop..),stat=&quot;count&quot;,vjust=-0.5)</code></pre>
+<p><img src="RMarkdown_CaseStudy2_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+</div>
+</div>
+<div id="attrition-vs-environment-satisfaction" class="section level4">
+<h4>Attrition Vs Environment Satisfaction:</h4>
+<div id="here-we-see-that-people-having-low-environment-satisfaction-30-leave-the-company." class="section level5">
+<h5>Here we see that people having low environment satisfaction (30%) leave the company.</h5>
+<pre class="r"><code>temp= employee %&gt;% mutate(EnvironmentSatisfaction=factor(EnvironmentSatisfaction)) %&gt;% mutate(EnvironmentSatisfaction=fct_recode(EnvironmentSatisfaction,&quot;Low&quot;=&quot;1&quot;,&quot;Medium&quot;=&quot;2&quot;,&quot;High&quot;=&quot;3&quot;,&quot;Very High&quot;=&quot;4&quot;))
+ggplot(temp,aes(x=EnvironmentSatisfaction,group=Attrition))+geom_bar(stat=&quot;count&quot;,aes(y=..prop..,fill=factor(..x..)))+labs(x=&quot;EnvironmentSatisfaction&quot;,y=&quot;Percentage&quot;,title=&quot;Environment satisfaction Vs Attrition Rates&quot;)+facet_wrap(~Attrition)+theme_few()+theme(legend.position=&quot;none&quot;,plot.title=element_text(hjust=0.5,size=14))+geom_text(aes(label=scales::percent(..prop..),y=..prop..),stat=&quot;count&quot;,vjust=-0.5)</code></pre>
+<p><img src="RMarkdown_CaseStudy2_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+</div>
+</div>
+<div id="attrition-vs-overtime" class="section level4">
+<h4>Attrition Vs OverTime:</h4>
+<div id="of-those-who-experience-attrition-have-worked-overtime-whereas-76.4-of-those-who-have-not-experienced-overtime-have-not-left-the-company.therefore-overtime-is-a-strong-indicator-of-attrition." class="section level5">
+<h5>57.1% of those who experience attrition have worked overtime whereas 76.4% of those who have not experienced overtime have not left the company.Therefore overtime is a strong indicator of attrition.</h5>
+<pre class="r"><code>ggplot(employee,aes(x=OverTime,group=Attrition))+geom_bar(stat=&quot;count&quot;,aes(y=..prop..,fill=factor(..x..)))+labs(x=&quot;Overtime&quot;,y=&quot;Percentage&quot;,title=&quot;Overtime Vs Attrition Rates&quot;)+facet_wrap(~Attrition)+theme_few()+theme(legend.position=&quot;none&quot;,plot.title=element_text(hjust=0.5,size=14))+geom_text(aes(label=scales::percent(..prop..),y=..prop..),stat=&quot;count&quot;,vjust=-0.5)</code></pre>
+<p><img src="RMarkdown_CaseStudy2_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+</div>
+</div>
+<div id="attrition-for-years-of-experience-vs-monthly-salary-and-their-correlation" class="section level4">
+<h4>Attrition for years of experience vs monthly salary and their correlation:</h4>
+<div id="as-expectedthere-exists-a-linear-relationship-between-years-of-experience-and-monthly-income-as-shown-by-the-line." class="section level5">
+<h5>As expected,there exists a linear relationship between years of experience and monthly income as shown by the line.</h5>
+</div>
+<div id="there-is-a-point-in-the-graphwhere-the-lines-seems-to-intersect-after-which-the-no-attrition-line-has-higher-monthly-income-compared-to-yes-attrition-line." class="section level5">
+<h5>There is a point in the graph,where the lines seems to intersect after which the no attrition line has higher monthly income compared to yes attrition line.</h5>
+</div>
+<div id="if-a-person-stays-in-the-company-then-how-long-he-stays-in-the-current-role-and-there-is-a-linear-relation-between-the-two-predictors." class="section level5">
+<h5>If a person stays in the company then how long he stays in the current role and there is a linear relation between the two predictors.</h5>
+<pre class="r"><code>ggplot(employee,aes(TotalWorkingYears,MonthlyIncome,size=MonthlyIncome,col=factor(Attrition)))+geom_point(alpha=0.4)+theme_few()+theme(plot.title=element_text(hjust=0.5,size=16),legend.position=&quot;bottom&quot;)+labs(x=&quot;Experience&quot;,y=&quot;MonthlyIncome&quot;,title=&quot;YearsofExp Vs MonthlyIncome&quot;,col=&quot;Attrition&quot;)+geom_smooth(method=&quot;lm&quot;)</code></pre>
+<p><img src="RMarkdown_CaseStudy2_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+</div>
+</div>
+</div>
+<div id="feature-selection" class="section level2">
+<h2>Feature Selection:</h2>
+<div id="checking-multicollinearity-vif" class="section level4">
+<h4>Checking Multicollinearity (VIF)</h4>
+<div id="vifvariation-inflation-factor-function-uses-to-predict-the-vif-value.-if-vif-value-is-greater-than-10-then-regression-co-efficient-are-poorly-estimated-due-to-multicollinearity-and-if-the-vif-value-lies-between-2---10-then-it-is-highly-correlated." class="section level5">
+<h5>vif(variation inflation factor) function uses to predict the vif value. If vif value is greater than 10 then regression co-efficient are poorly estimated due to multicollinearity and if the vif value lies between 2 - 10 then it is highly correlated.</h5>
+<pre class="r"><code># data preparation for modeling
+employee2 &lt;- employee
+# Changing the class of variable from numeric to factor
+employee2$Education &lt;- factor(employee2$Education)
+employee2$EnvironmentSatisfaction &lt;- factor(employee2$EnvironmentSatisfaction)
+employee2$JobInvolvement &lt;- factor(employee2$JobInvolvement)
+employee2$JobLevel &lt;- factor(employee2$JobLevel)
+employee2$JobSatisfaction &lt;- factor(employee2$JobSatisfaction)
+employee2$PerformanceRating &lt;- factor(employee2$PerformanceRating)
+employee2$RelationshipSatisfaction &lt;- factor(employee2$RelationshipSatisfaction)
+employee2$StockOptionLevel &lt;- factor(employee2$StockOptionLevel)
+employee2$WorkLifeBalance &lt;- factor(employee2$WorkLifeBalance)
+# Changing the Atrition variable value to 1 for &#39;Yes&#39; and 0 for &#39;No&#39;
+employee2$Attrition &lt;- ifelse(employee2$Attrition == &quot;Yes&quot;,1,0)
+
+# Changing the categorical variables to dummy variable so that the variables can be used for fit in the model
+dmy &lt;- dummyVars(&quot; ~ .&quot;, data = employee2, fullRank=T)
+employee3 &lt;- data.frame(predict(dmy, newdata = employee2))
+print(str(employee3))</code></pre>
+<pre><code>## &#39;data.frame&#39;:    870 obs. of  63 variables:
+##  $ Age                              : num  32 40 35 32 24 27 41 37 34 34 ...
+##  $ Attrition                        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ BusinessTravel.Travel_Frequently : num  0 0 1 0 1 1 0 0 0 1 ...
+##  $ BusinessTravel.Travel_Rarely     : num  1 1 0 1 0 0 1 1 1 0 ...
+##  $ DailyRate                        : num  117 1308 200 801 567 ...
+##  $ Department.Research...Development: num  0 1 1 0 1 1 1 0 0 1 ...
+##  $ Department.Sales                 : num  1 0 0 1 0 0 0 1 1 0 ...
+##  $ DistanceFromHome                 : num  13 14 18 1 2 10 5 10 10 10 ...
+##  $ Education.2                      : num  0 0 1 0 0 1 0 0 0 0 ...
+##  $ Education.3                      : num  0 1 0 0 0 0 0 0 0 0 ...
+##  $ Education.4                      : num  1 0 0 1 0 0 0 1 1 1 ...
+##  $ Education.5                      : num  0 0 0 0 0 0 1 0 0 0 ...
+##  $ EducationField.Life.Sciences     : num  1 0 1 0 0 1 0 1 1 0 ...
+##  $ EducationField.Marketing         : num  0 0 0 1 0 0 0 0 0 0 ...
+##  $ EducationField.Medical           : num  0 1 0 0 0 0 1 0 0 0 ...
+##  $ EducationField.Other             : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ EducationField.Technical.Degree  : num  0 0 0 0 1 0 0 0 0 1 ...
+##  $ EnvironmentSatisfaction.2        : num  1 0 0 0 0 0 1 0 0 0 ...
+##  $ EnvironmentSatisfaction.3        : num  0 1 1 1 0 0 0 0 1 0 ...
+##  $ EnvironmentSatisfaction.4        : num  0 0 0 0 0 1 0 1 0 1 ...
+##  $ Gender.Male                      : num  1 1 1 0 0 1 1 0 0 1 ...
+##  $ HourlyRate                       : num  73 44 60 48 32 32 90 88 87 92 ...
+##  $ JobInvolvement.2                 : num  0 1 0 0 0 0 0 1 0 1 ...
+##  $ JobInvolvement.3                 : num  1 0 1 1 1 1 0 0 1 0 ...
+##  $ JobInvolvement.4                 : num  0 0 0 0 0 0 1 0 0 0 ...
+##  $ JobLevel.2                       : num  1 0 0 0 0 0 0 1 0 1 ...
+##  $ JobLevel.3                       : num  0 0 1 1 0 1 0 0 0 0 ...
+##  $ JobLevel.4                       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ JobLevel.5                       : num  0 1 0 0 0 0 0 0 0 0 ...
+##  $ JobRole.Human.Resources          : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ JobRole.Laboratory.Technician    : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ JobRole.Manager                  : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ JobRole.Manufacturing.Director   : num  0 0 1 0 0 1 0 0 0 0 ...
+##  $ JobRole.Research.Director        : num  0 1 0 0 0 0 0 0 0 0 ...
+##  $ JobRole.Research.Scientist       : num  0 0 0 0 1 0 1 0 0 0 ...
+##  $ JobRole.Sales.Executive          : num  1 0 0 1 0 0 0 1 0 0 ...
+##  $ JobRole.Sales.Representative     : num  0 0 0 0 0 0 0 0 1 0 ...
+##  $ JobSatisfaction.2                : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ JobSatisfaction.3                : num  0 1 0 0 0 0 1 0 1 1 ...
+##  $ JobSatisfaction.4                : num  1 0 1 1 1 0 0 1 0 0 ...
+##  $ MaritalStatus.Married            : num  0 0 0 1 0 0 1 0 1 1 ...
+##  $ MaritalStatus.Single             : num  0 1 1 0 1 0 0 0 0 0 ...
+##  $ MonthlyIncome                    : num  4403 19626 9362 10422 3760 ...
+##  $ MonthlyRate                      : num  9250 17544 19944 24032 17218 ...
+##  $ NumCompaniesWorked               : num  2 1 2 1 1 1 2 2 1 1 ...
+##  $ OverTime.Yes                     : num  0 0 0 0 1 0 1 1 1 0 ...
+##  $ PercentSalaryHike                : num  11 14 11 19 13 21 12 14 19 14 ...
+##  $ PerformanceRating.4              : num  0 0 0 0 0 1 0 0 0 0 ...
+##  $ RelationshipSatisfaction.2       : num  0 0 0 0 0 0 0 0 0 1 ...
+##  $ RelationshipSatisfaction.3       : num  1 0 1 1 1 1 0 1 0 0 ...
+##  $ RelationshipSatisfaction.4       : num  0 0 0 0 0 0 0 0 1 0 ...
+##  $ StockOptionLevel.1               : num  1 0 0 0 0 0 0 0 1 1 ...
+##  $ StockOptionLevel.2               : num  0 0 0 1 0 1 0 0 0 0 ...
+##  $ StockOptionLevel.3               : num  0 0 0 0 0 0 0 1 0 0 ...
+##  $ TotalWorkingYears                : num  8 21 10 14 6 9 7 8 1 8 ...
+##  $ TrainingTimesLastYear            : num  3 2 2 3 2 4 5 5 2 3 ...
+##  $ WorkLifeBalance.2                : num  1 0 0 0 0 1 1 0 0 1 ...
+##  $ WorkLifeBalance.3                : num  0 0 1 1 1 0 0 1 1 0 ...
+##  $ WorkLifeBalance.4                : num  0 1 0 0 0 0 0 0 0 0 ...
+##  $ YearsAtCompany                   : num  5 20 2 14 6 9 4 1 1 8 ...
+##  $ YearsInCurrentRole               : num  2 7 2 10 3 7 2 0 1 2 ...
+##  $ YearsSinceLastPromotion          : num  0 4 2 5 1 1 0 0 0 7 ...
+##  $ YearsWithCurrManager             : num  3 9 2 7 3 7 3 0 0 7 ...
+## NULL</code></pre>
+<pre class="r"><code># VIF check for Multicollinearity
+vif_output &lt;- lm(Attrition ~., data = employee3)
+vif_res &lt;- car::vif(vif_output)
+summary(vif_res)</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   1.062   1.834   2.869   5.961   5.338  41.996</code></pre>
+<pre class="r"><code>print(vif_res)</code></pre>
+<pre><code>##                               Age  BusinessTravel.Travel_Frequently 
+##                          2.032099                          2.349610 
+##      BusinessTravel.Travel_Rarely                         DailyRate 
+##                          2.371303                          1.072145 
+## Department.Research...Development                  Department.Sales 
+##                         41.928691                         41.995785 
+##                  DistanceFromHome                       Education.2 
+##                          1.091408                          2.442393 
+##                       Education.3                       Education.4 
+##                          2.913224                          2.900765 
+##                       Education.5      EducationField.Life.Sciences 
+##                          1.374303                         26.023089 
+##          EducationField.Marketing            EducationField.Medical 
+##                         12.345064                         23.065974 
+##              EducationField.Other   EducationField.Technical.Degree 
+##                          6.950375                          9.191336 
+##         EnvironmentSatisfaction.2         EnvironmentSatisfaction.3 
+##                          1.707615                          1.881001 
+##         EnvironmentSatisfaction.4                       Gender.Male 
+##                          1.876365                          1.064385 
+##                        HourlyRate                  JobInvolvement.2 
+##                          1.066661                          4.544043 
+##                  JobInvolvement.3                  JobInvolvement.4 
+##                          5.225714                          2.637391 
+##                        JobLevel.2                        JobLevel.3 
+##                          4.991545                          7.630939 
+##                        JobLevel.4                        JobLevel.5 
+##                          9.541048                          9.407292 
+##           JobRole.Human.Resources     JobRole.Laboratory.Technician 
+##                          6.511811                          4.300969 
+##                   JobRole.Manager    JobRole.Manufacturing.Director 
+##                          4.705541                          2.076369 
+##         JobRole.Research.Director        JobRole.Research.Scientist 
+##                          3.086920                          4.753584 
+##           JobRole.Sales.Executive      JobRole.Sales.Representative 
+##                         18.230633                          7.492536 
+##                 JobSatisfaction.2                 JobSatisfaction.3 
+##                          1.664792                          1.814517 
+##                 JobSatisfaction.4             MaritalStatus.Married 
+##                          1.832010                          1.991775 
+##              MaritalStatus.Single                     MonthlyIncome 
+##                          4.211170                         22.327073 
+##                       MonthlyRate                NumCompaniesWorked 
+##                          1.081048                          1.413734 
+##                      OverTime.Yes                 PercentSalaryHike 
+##                          1.061952                          2.700371 
+##               PerformanceRating.4        RelationshipSatisfaction.2 
+##                          2.680772                          1.708293 
+##        RelationshipSatisfaction.3        RelationshipSatisfaction.4 
+##                          1.871441                          1.838717 
+##                StockOptionLevel.1                StockOptionLevel.2 
+##                          2.863025                          1.813770 
+##                StockOptionLevel.3                 TotalWorkingYears 
+##                          1.634511                          5.865167 
+##             TrainingTimesLastYear                 WorkLifeBalance.2 
+##                          1.078947                          4.133261 
+##                 WorkLifeBalance.3                 WorkLifeBalance.4 
+##                          5.028300                          2.875647 
+##                    YearsAtCompany                YearsInCurrentRole 
+##                          5.375685                          3.092657 
+##           YearsSinceLastPromotion              YearsWithCurrManager 
+##                          1.927687                          2.895128</code></pre>
+</div>
+</div>
+</div>
+<div id="modelling" class="section level2">
+<h2>Modelling:</h2>
+<div id="logistic-regression-model-for-classification-of-employees-into-attrition-or-no-attrition" class="section level3">
+<h3>Logistic Regression model for classification of employees into Attrition or no Attrition:</h3>
+<pre class="r"><code>## Logistic Regression model
+
+#Split data into train and test using cross validation in ratio of 70% train and 30% test
+set.seed(2017)
+train &lt;- sample(1:nrow(employee3), nrow(employee3)*.7)
+test = -train
+modeldata &lt;- employee3[train,]
+validationdata &lt;- employee3[test,]
+cat(&quot;Train data has&quot;, nrow(modeldata),&quot;observations&quot;)</code></pre>
+<pre><code>## Train data has 609 observations</code></pre>
+<pre class="r"><code>cat(&quot;Test data has&quot;, nrow(validationdata),&quot;observations&quot;)</code></pre>
+<pre><code>## Test data has 261 observations</code></pre>
+<pre class="r"><code># Fitting the Logistic Regression Model
+logmodel &lt;- glm(Attrition ~., family=binomial(link=&quot;logit&quot;), data = modeldata)</code></pre>
+<pre><code>## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</code></pre>
+<pre class="r"><code>print(summary(logmodel))</code></pre>
+<pre><code>## 
+## Call:
+## glm(formula = Attrition ~ ., family = binomial(link = &quot;logit&quot;), 
+##     data = modeldata)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.7146  -0.3629  -0.1062  -0.0049   3.2962  
+## 
+## Coefficients:
+##                                     Estimate Std. Error z value Pr(&gt;|z|)
+## (Intercept)                       -1.089e+01  4.361e+03  -0.002 0.998008
+## Age                               -8.203e-02  2.845e-02  -2.883 0.003941
+## BusinessTravel.Travel_Frequently   2.057e+00  7.320e-01   2.811 0.004943
+## BusinessTravel.Travel_Rarely       5.808e-01  6.252e-01   0.929 0.352961
+## DailyRate                         -5.741e-04  4.551e-04  -1.261 0.207192
+## Department.Research...Development  1.879e+01  4.361e+03   0.004 0.996562
+## Department.Sales                   1.892e+01  4.361e+03   0.004 0.996538
+## DistanceFromHome                   8.258e-02  2.325e-02   3.552 0.000382
+## Education.2                        8.404e-01  6.113e-01   1.375 0.169204
+## Education.3                        3.318e-01  5.489e-01   0.605 0.545501
+## Education.4                        1.388e-01  6.132e-01   0.226 0.820921
+## Education.5                        2.488e+00  1.236e+00   2.013 0.044153
+## EducationField.Life.Sciences      -1.218e+00  1.925e+00  -0.633 0.526981
+## EducationField.Marketing          -1.648e+00  1.995e+00  -0.826 0.408565
+## EducationField.Medical            -1.424e+00  1.929e+00  -0.738 0.460631
+## EducationField.Other              -1.076e+00  2.030e+00  -0.530 0.596044
+## EducationField.Technical.Degree   -8.578e-01  2.009e+00  -0.427 0.669456
+## EnvironmentSatisfaction.2         -1.876e+00  5.583e-01  -3.360 0.000779
+## EnvironmentSatisfaction.3         -1.463e+00  5.069e-01  -2.885 0.003911
+## EnvironmentSatisfaction.4         -1.568e+00  5.256e-01  -2.983 0.002853
+## Gender.Male                        1.218e-01  3.499e-01   0.348 0.727828
+## HourlyRate                         1.030e-02  8.895e-03   1.158 0.246952
+## JobInvolvement.2                  -2.107e+00  6.526e-01  -3.228 0.001244
+## JobInvolvement.3                  -2.585e+00  6.158e-01  -4.198 2.70e-05
+## JobInvolvement.4                  -2.653e+00  8.162e-01  -3.250 0.001152
+## JobLevel.2                        -2.146e+00  9.957e-01  -2.155 0.031154
+## JobLevel.3                         8.499e-01  1.488e+00   0.571 0.567743
+## JobLevel.4                         5.465e-01  2.394e+00   0.228 0.819419
+## JobLevel.5                         4.577e+00  3.095e+00   1.479 0.139093
+## JobRole.Human.Resources            1.788e+01  4.361e+03   0.004 0.996729
+## JobRole.Laboratory.Technician     -2.660e-01  1.068e+00  -0.249 0.803292
+## JobRole.Manager                    6.445e-01  1.738e+00   0.371 0.710731
+## JobRole.Manufacturing.Director    -1.624e+00  1.308e+00  -1.242 0.214421
+## JobRole.Research.Director         -2.161e+01  1.161e+03  -0.019 0.985148
+## JobRole.Research.Scientist        -1.361e+00  1.103e+00  -1.234 0.217106
+## JobRole.Sales.Executive            1.078e+00  1.746e+00   0.617 0.537046
+## JobRole.Sales.Representative       8.432e-01  1.979e+00   0.426 0.670005
+## JobSatisfaction.2                 -1.112e+00  5.530e-01  -2.011 0.044356
+## JobSatisfaction.3                 -5.166e-01  4.901e-01  -1.054 0.291818
+## JobSatisfaction.4                 -1.577e+00  5.160e-01  -3.057 0.002236
+## MaritalStatus.Married              1.156e+00  6.084e-01   1.900 0.057474
+## MaritalStatus.Single               1.579e+00  7.831e-01   2.016 0.043759
+## MonthlyIncome                     -2.967e-04  2.095e-04  -1.416 0.156733
+## MonthlyRate                       -9.987e-06  2.520e-05  -0.396 0.691853
+## NumCompaniesWorked                 3.127e-01  8.154e-02   3.835 0.000125
+## OverTime.Yes                       2.632e+00  4.063e-01   6.477 9.37e-11
+## PercentSalaryHike                  6.597e-03  7.318e-02   0.090 0.928169
+## PerformanceRating.4               -2.050e-01  7.641e-01  -0.268 0.788499
+## RelationshipSatisfaction.2        -1.020e+00  5.802e-01  -1.759 0.078622
+## RelationshipSatisfaction.3        -1.234e+00  5.033e-01  -2.452 0.014200
+## RelationshipSatisfaction.4        -1.615e+00  4.904e-01  -3.294 0.000987
+## StockOptionLevel.1                -1.392e+00  5.656e-01  -2.460 0.013889
+## StockOptionLevel.2                -1.185e+00  9.010e-01  -1.315 0.188396
+## StockOptionLevel.3                 3.952e-01  8.214e-01   0.481 0.630480
+## TotalWorkingYears                 -4.064e-02  5.718e-02  -0.711 0.477181
+## TrainingTimesLastYear             -2.378e-01  1.475e-01  -1.613 0.106802
+## WorkLifeBalance.2                 -1.309e+00  6.708e-01  -1.951 0.051080
+## WorkLifeBalance.3                 -2.053e+00  6.488e-01  -3.165 0.001552
+## WorkLifeBalance.4                 -3.256e+00  9.002e-01  -3.617 0.000298
+## YearsAtCompany                     1.889e-01  7.038e-02   2.684 0.007282
+## YearsInCurrentRole                -8.900e-02  9.407e-02  -0.946 0.344112
+## YearsSinceLastPromotion            1.992e-01  8.728e-02   2.282 0.022499
+## YearsWithCurrManager              -3.770e-01  9.839e-02  -3.832 0.000127
+##                                      
+## (Intercept)                          
+## Age                               ** 
+## BusinessTravel.Travel_Frequently  ** 
+## BusinessTravel.Travel_Rarely         
+## DailyRate                            
+## Department.Research...Development    
+## Department.Sales                     
+## DistanceFromHome                  ***
+## Education.2                          
+## Education.3                          
+## Education.4                          
+## Education.5                       *  
+## EducationField.Life.Sciences         
+## EducationField.Marketing             
+## EducationField.Medical               
+## EducationField.Other                 
+## EducationField.Technical.Degree      
+## EnvironmentSatisfaction.2         ***
+## EnvironmentSatisfaction.3         ** 
+## EnvironmentSatisfaction.4         ** 
+## Gender.Male                          
+## HourlyRate                           
+## JobInvolvement.2                  ** 
+## JobInvolvement.3                  ***
+## JobInvolvement.4                  ** 
+## JobLevel.2                        *  
+## JobLevel.3                           
+## JobLevel.4                           
+## JobLevel.5                           
+## JobRole.Human.Resources              
+## JobRole.Laboratory.Technician        
+## JobRole.Manager                      
+## JobRole.Manufacturing.Director       
+## JobRole.Research.Director            
+## JobRole.Research.Scientist           
+## JobRole.Sales.Executive              
+## JobRole.Sales.Representative         
+## JobSatisfaction.2                 *  
+## JobSatisfaction.3                    
+## JobSatisfaction.4                 ** 
+## MaritalStatus.Married             .  
+## MaritalStatus.Single              *  
+## MonthlyIncome                        
+## MonthlyRate                          
+## NumCompaniesWorked                ***
+## OverTime.Yes                      ***
+## PercentSalaryHike                    
+## PerformanceRating.4                  
+## RelationshipSatisfaction.2        .  
+## RelationshipSatisfaction.3        *  
+## RelationshipSatisfaction.4        ***
+## StockOptionLevel.1                *  
+## StockOptionLevel.2                   
+## StockOptionLevel.3                   
+## TotalWorkingYears                    
+## TrainingTimesLastYear                
+## WorkLifeBalance.2                 .  
+## WorkLifeBalance.3                 ** 
+## WorkLifeBalance.4                 ***
+## YearsAtCompany                    ** 
+## YearsInCurrentRole                   
+## YearsSinceLastPromotion           *  
+## YearsWithCurrManager              ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 556.76  on 608  degrees of freedom
+## Residual deviance: 265.40  on 546  degrees of freedom
+## AIC: 391.4
+## 
+## Number of Fisher Scoring iterations: 18</code></pre>
+<pre class="r"><code># Accessing the predictive ability of the logistic regression model
+log_pred &lt;- predict(logmodel,newdata=validationdata,type=&#39;response&#39;)
+log_pred &lt;- ifelse(log_pred&gt;=0.5,1,0)
+confusionMatrix(factor(log_pred),factor(validationdata$Attrition))</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction   0   1
+##          0 211  14
+##          1  14  22
+##                                           
+##                Accuracy : 0.8927          
+##                  95% CI : (0.8487, 0.9275)
+##     No Information Rate : 0.8621          
+##     P-Value [Acc &gt; NIR] : 0.08585         
+##                                           
+##                   Kappa : 0.5489          
+##                                           
+##  Mcnemar&#39;s Test P-Value : 1.00000         
+##                                           
+##             Sensitivity : 0.9378          
+##             Specificity : 0.6111          
+##          Pos Pred Value : 0.9378          
+##          Neg Pred Value : 0.6111          
+##              Prevalence : 0.8621          
+##          Detection Rate : 0.8084          
+##    Detection Prevalence : 0.8621          
+##       Balanced Accuracy : 0.7744          
+##                                           
+##        &#39;Positive&#39; Class : 0               
+## </code></pre>
+<pre class="r"><code># Plotting the ROC curve
+res &lt;- predict(logmodel, modeldata, type = &quot;response&quot;)
+ROCRPred &lt;- prediction(res, modeldata$Attrition)
+ROCRPerf &lt;- performance(ROCRPred,&quot;tpr&quot;,&quot;fpr&quot;)
+plot(ROCRPerf,colorize = TRUE, print.cutoffs.at = seq(0.1, by = 0.1))</code></pre>
+<p><img src="RMarkdown_CaseStudy2_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+</div>
+<div id="conclusion-for-the-logistic-regression-model-for-classification-of-employees-into-attrition-or-no-attrition-" class="section level3">
+<h3>Conclusion for the Logistic Regression model for classification of employees into Attrition or no Attrition:-</h3>
+<div id="accuracy---it-is-the-ratio-of-total-number-of-correct-predictor-based-upon-the-total-number-of-predictor.-it-explain-about-model-predicting-accuracy.-the-accuracy-for-the-logistic-regression-model-is-89." class="section level5">
+<h5>Accuracy - It is the ratio of total number of correct predictor based upon the total number of predictor. It explain about model predicting accuracy. The accuracy for the Logistic Regression model is 89%.</h5>
+</div>
+<div id="sensitivity---the-proportion-of-actual-positive-cases-that-were-correctly-identified.the-sensitivity-for-the-logistic-regression-model-is-94." class="section level5">
+<h5>Sensitivity - The proportion of actual positive cases that were correctly identified.The sensitivity for the Logistic Regression model is 94%.</h5>
+</div>
+<div id="specificity---the-proportion-of-actual-negative-cases-that-were-correctly-identified.the-specificity-for-the-logistic-regression-model-is-61." class="section level5">
+<h5>Specificity - The proportion of actual negative cases that were correctly identified.The specificity for the Logistic Regression model is 61%.</h5>
+</div>
+<div id="based-on-the-logistic-regression-model-the-variable-which-majorly-affect-the-attrition-are-" class="section level5">
+<h5>Based on the Logistic Regression model, the variable which majorly affect the attrition are:-</h5>
+<div id="highly-significant-are-distancefromhomeenvironmentsatisfaction-lowjobinvolvement-highmoderatenumcompaniesworked-overtime-yesrelationshipsatisfaction-lowworklifebalance-lowyearswithcurrmanager" class="section level6">
+<h6>Highly Significant: are DistanceFromHome,EnvironmentSatisfaction (Low),JobInvolvement (High/Moderate),NumCompaniesWorked, OverTime (Yes),RelationshipSatisfaction (Low),WorkLifeBalance (Low),YearsWithCurrManager</h6>
+</div>
+<div id="significant-agebusinesstravel-frequentlyjobsatisfaction-low" class="section level6">
+<h6>Significant: Age,BusinessTravel (Frequently),JobSatisfaction (Low),</h6>
+</div>
+<div id="moderately-significant-education-higher-educationmaritalstatus-singleyearssincelastpromotion-highstockoptionlevelless" class="section level6">
+<h6>Moderately Significant: Education (Higher Education),MaritalStatus (Single),YearsSinceLastPromotion (High),StockOptionLevel(Less)</h6>
+</div>
+</div>
+<div id="to-conclude-for-the-logistic-regression-model-the-variable-which-majorly-affect-the-attrition-are-overtime-yes-business-travel-environmentsatisfaction-low-jobinvolvement-highmoderate-numcompaniesworked-relationshipsatisfaction-low-worklifebalance-low-yearswithcurrmanagerstockoptionlevellow-etc." class="section level5">
+<h5>To conclude for the Logistic Regression model, the variable which majorly affect the attrition are OverTime (Yes), Business Travel, EnvironmentSatisfaction (Low), JobInvolvement (High/Moderate), NumCompaniesWorked, RelationshipSatisfaction (Low), WorkLifeBalance (Low), YearsWithCurrManager,StockOptionLevel(Low) etc.</h5>
+</div>
+</div>
+<div id="k-nn-model-for-classification-of-employess-into-attrition-or-no-attrition" class="section level3">
+<h3>k-NN model for classification of employess into Attrition or no Attrition:</h3>
+<pre class="r"><code>## k-NN model having 70-30 train/test Cross Validation along with hyperparamater tuning
+splitPerc = .7
+iterations = 100
+numks = 50
+masterAccuracy = matrix(nrow = iterations, ncol = numks)
+masterSensitivity = matrix(nrow = iterations, ncol = numks)
+masterSpecificity = matrix(nrow = iterations, ncol = numks)
+for(j in 1:iterations)
+{
+set.seed(j)
+train &lt;- sample(1:nrow(employee3), nrow(employee3)*splitPerc)
+test = -train
+modeldata &lt;- employee3[train,]
+validationdata &lt;- employee3[test,]  
+for(i in 1:numks)
+{
+classifications = knn(modeldata[,-2], validationdata[,-2], modeldata$Attrition, prob = TRUE, k = i)
+table(classifications,validationdata$Attrition)
+CM = confusionMatrix(table(classifications,validationdata$Attrition))
+masterAccuracy[j,i] = CM$overall[1]    #Accuracy
+masterSensitivity[j,i] = CM$byClass[1] #Sensitivity
+masterSpecificity[j,i] = CM$byClass[2] #Specificity
+}
+}
+MeanAccuracy = colMeans(masterAccuracy)
+which.max(MeanAccuracy)</code></pre>
+<pre><code>## [1] 21</code></pre>
+<pre class="r"><code>max(MeanAccuracy)</code></pre>
+<pre><code>## [1] 0.84</code></pre>
+<pre class="r"><code>mean(MeanAccuracy) #average KNN accuracy</code></pre>
+<pre><code>## [1] 0.832767</code></pre>
+<pre class="r"><code>plot(seq(1,numks,1),MeanAccuracy, type = &quot;l&quot;, xlab = &quot;k value&quot;, ylab = &quot;Accuracy (%)&quot;, main =&quot;Accuracy by k Value&quot;)</code></pre>
+<p><img src="RMarkdown_CaseStudy2_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<pre class="r"><code>MeanSpecificity = colMeans(masterSensitivity)
+which.max(MeanSpecificity)</code></pre>
+<pre><code>## [1] 21</code></pre>
+<pre class="r"><code>max(MeanSpecificity)</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="r"><code>mean(MeanSpecificity) #average KNN specificity</code></pre>
+<pre><code>## [1] 0.9878007</code></pre>
+<pre class="r"><code>plot(seq(1,numks,1),MeanSpecificity, type = &quot;l&quot;, xlab = &quot;k value&quot;, ylab = &quot;Specificity (%)&quot;, main =&quot;Specificity by k Value&quot;)</code></pre>
+<p><img src="RMarkdown_CaseStudy2_files/figure-html/unnamed-chunk-20-2.png" width="672" /></p>
+<pre class="r"><code>## k-NN model for k=2
+#Split data into train and test using cross validation in ratio of 70% train and 30% test
+set.seed(1)
+train &lt;- sample(1:nrow(employee3), nrow(employee3)*.7)
+test = -train
+modeldata &lt;- employee3[train,]
+validationdata &lt;- employee3[test,]
+cat(&quot;Train data has&quot;, nrow(modeldata),&quot;observations&quot;)</code></pre>
+<pre><code>## Train data has 609 observations</code></pre>
+<pre class="r"><code>cat(&quot;Test data has&quot;, nrow(validationdata),&quot;observations&quot;)</code></pre>
+<pre><code>## Test data has 261 observations</code></pre>
+<pre class="r"><code># k-NN classification
+classifications = knn(modeldata[,-2], validationdata[,-2], modeldata$Attrition, prob = TRUE, k = 2)
+table(classifications,validationdata$Attrition)</code></pre>
+<pre><code>##                
+## classifications   0   1
+##               0 181  38
+##               1  34   8</code></pre>
+<pre class="r"><code>CM = confusionMatrix(table(classifications,validationdata$Attrition))
+CM</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##                
+## classifications   0   1
+##               0 181  38
+##               1  34   8
+##                                           
+##                Accuracy : 0.7241          
+##                  95% CI : (0.6657, 0.7775)
+##     No Information Rate : 0.8238          
+##     P-Value [Acc &gt; NIR] : 1.0000          
+##                                           
+##                   Kappa : 0.0163          
+##                                           
+##  Mcnemar&#39;s Test P-Value : 0.7237          
+##                                           
+##             Sensitivity : 0.8419          
+##             Specificity : 0.1739          
+##          Pos Pred Value : 0.8265          
+##          Neg Pred Value : 0.1905          
+##              Prevalence : 0.8238          
+##          Detection Rate : 0.6935          
+##    Detection Prevalence : 0.8391          
+##       Balanced Accuracy : 0.5079          
+##                                           
+##        &#39;Positive&#39; Class : 0               
+## </code></pre>
+<pre class="r"><code>## k-NN model - Leave One Out k-NN or Internal CV k-NN
+classifications = knn.cv(employee3[,-2], employee3$Attrition, prob = TRUE, k = 2)
+confusionMatrix(table(classifications,employee3$Attrition))</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##                
+## classifications   0   1
+##               0 605 116
+##               1 125  24
+##                                          
+##                Accuracy : 0.723          
+##                  95% CI : (0.692, 0.7525)
+##     No Information Rate : 0.8391         
+##     P-Value [Acc &gt; NIR] : 1.0000         
+##                                          
+##                   Kappa : 2e-04          
+##                                          
+##  Mcnemar&#39;s Test P-Value : 0.6063         
+##                                          
+##             Sensitivity : 0.8288         
+##             Specificity : 0.1714         
+##          Pos Pred Value : 0.8391         
+##          Neg Pred Value : 0.1611         
+##              Prevalence : 0.8391         
+##          Detection Rate : 0.6954         
+##    Detection Prevalence : 0.8287         
+##       Balanced Accuracy : 0.5001         
+##                                          
+##        &#39;Positive&#39; Class : 0              
+## </code></pre>
+</div>
+<div id="conclusion-for-the-k-nn-model-best-k-nn-model-which-is-the-full-model-using-all-the-predictor-variables-for-classification-of-employees-into-attrition-or-no-attrition-" class="section level3">
+<h3>Conclusion for the k-NN model (best k-NN model which is the full model using all the predictor variables) for classification of employees into Attrition or no Attrition:-</h3>
+<div id="accuracy---it-is-the-ratio-of-total-number-of-correct-predictor-based-upon-the-total-number-of-predictor.-it-explain-about-model-predicting-accuracy.-the-accuracy-for-the-k-nn-model-is-72." class="section level5">
+<h5>Accuracy - It is the ratio of total number of correct predictor based upon the total number of predictor. It explain about model predicting accuracy. The accuracy for the k-NN model is 72%.</h5>
+</div>
+<div id="sensitivity---the-proportion-of-actual-positive-cases-that-were-correctly-identified.the-sensitivity-for-the-k-nn-model-is-84." class="section level5">
+<h5>Sensitivity - The proportion of actual positive cases that were correctly identified.The sensitivity for the k-NN model is 84%.</h5>
+</div>
+<div id="specificity---the-proportion-of-actual-negative-cases-that-were-correctly-identified.the-specificity-for-the-k-nn-model-is-17." class="section level5">
+<h5>Specificity - The proportion of actual negative cases that were correctly identified.The specificity for the k-NN model is 17%.</h5>
+</div>
+<div id="to-conclude-for-the-k-nn-model-the-specificty-for-the-model-is-not-so-good-as-the-dataset-is-imbalanced-which-will-bias-the-prediction-model-towards-the-more-common-class-here-is-no.-from-this-k-nn-model-there-is-also-not-much-conclusive-variable-importance-which-majorly-affects-the-attrition." class="section level5">
+<h5>To conclude for the k-NN model, the specificty for the model is not so good, as the dataset is imbalanced which will bias the prediction model towards the more common class (here is ‘NO’). From this k-NN model, there is also not much conclusive variable importance which majorly affects the attrition.</h5>
+</div>
+</div>
+<div id="solving-unbalanced-data-problem-using-smote-method-and-then-running-the-k-nn-model-" class="section level3">
+<h3>Solving Unbalanced data problem using SMOTE method, and then running the k-NN model:-</h3>
+<pre class="r"><code>employee4 &lt;- employee3
+Classcount = table(employee4$Attrition)
+# Over Sampling
+over = ( (0.6 * max(Classcount)) - min(Classcount) ) / min(Classcount)
+# Under Sampling
+under = (0.4 * max(Classcount)) / (min(Classcount) * over)
+over = round(over, 1) * 100
+under = round(under, 1) * 100
+employee4$Attrition = factor(employee4$Attrition)
+#Generate the balanced data set
+BalancedData = DMwR::SMOTE(Attrition~., employee4, perc.over = over, k = 5, perc.under = under)
+# let check the output of the Balancing
+BalancedData %&gt;%
+        group_by(Attrition) %&gt;%
+        tally() %&gt;%
+        ggplot(aes(x = Attrition, y = n,fill=Attrition)) +
+        geom_bar(stat = &quot;identity&quot;) +
+        theme_minimal()+
+        labs(x=&quot;Attrition&quot;, y=&quot;Count of Attrition&quot;)+
+        ggtitle(&quot;Attrition&quot;)+
+        geom_text(aes(label = n), vjust = -0.5, position = position_dodge(0.9))</code></pre>
+<p><img src="RMarkdown_CaseStudy2_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<pre class="r"><code>## k-NN model for k=2
+#Split data into train and test using cross validation in ratio of 70% train and 30% test
+set.seed(1)
+train &lt;- sample(1:nrow(BalancedData), nrow(BalancedData)*.7)
+test = -train
+modeldata &lt;- BalancedData[train,]
+validationdata &lt;- BalancedData[test,]
+cat(&quot;Train data has&quot;, nrow(modeldata),&quot;observations&quot;)</code></pre>
+<pre><code>## Train data has 489 observations</code></pre>
+<pre class="r"><code>cat(&quot;Test data has&quot;, nrow(validationdata),&quot;observations&quot;)</code></pre>
+<pre><code>## Test data has 211 observations</code></pre>
+<pre class="r"><code># k-NN classifications for full model using all the predictor variables on the balanaced data
+classifications = knn(modeldata[,-2], validationdata[,-2], modeldata$Attrition, prob = TRUE, k = 7)
+#table(classifications,validationdata$Attrition)
+CM = confusionMatrix(table(classifications,validationdata$Attrition))
+CM</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##                
+## classifications   0   1
+##               0  36  21
+##               1  52 102
+##                                          
+##                Accuracy : 0.654          
+##                  95% CI : (0.5857, 0.718)
+##     No Information Rate : 0.5829         
+##     P-Value [Acc &gt; NIR] : 0.020707       
+##                                          
+##                   Kappa : 0.2509         
+##                                          
+##  Mcnemar&#39;s Test P-Value : 0.000446       
+##                                          
+##             Sensitivity : 0.4091         
+##             Specificity : 0.8293         
+##          Pos Pred Value : 0.6316         
+##          Neg Pred Value : 0.6623         
+##              Prevalence : 0.4171         
+##          Detection Rate : 0.1706         
+##    Detection Prevalence : 0.2701         
+##       Balanced Accuracy : 0.6192         
+##                                          
+##        &#39;Positive&#39; Class : 0              
+## </code></pre>
+</div>
+<div id="conclusion-for-the-k-nn-model-using-the-balanaced-data-from-smore-method-for-classification-of-employees-into-attrition-or-no-attrition-" class="section level3">
+<h3>Conclusion for the k-NN model using the balanaced data from SMORE method for classification of employees into Attrition or no Attrition:-</h3>
+<div id="accuracy---it-is-the-ratio-of-total-number-of-correct-predictor-based-upon-the-total-number-of-predictor.-it-explain-about-model-predicting-accuracy.-the-accuracy-for-the-k-nn-model-is-61." class="section level5">
+<h5>Accuracy - It is the ratio of total number of correct predictor based upon the total number of predictor. It explain about model predicting accuracy. The accuracy for the k-NN model is 61%.</h5>
+</div>
+<div id="sensitivity---the-proportion-of-actual-positive-cases-that-were-correctly-identified.the-sensitivity-for-the-k-nn-model-is-35." class="section level5">
+<h5>Sensitivity - The proportion of actual positive cases that were correctly identified.The sensitivity for the k-NN model is 35%.</h5>
+</div>
+<div id="specificity---the-proportion-of-actual-negative-cases-that-were-correctly-identified.the-specificity-for-the-k-nn-model-is-79.6." class="section level5">
+<h5>Specificity - The proportion of actual negative cases that were correctly identified.The specificity for the k-NN model is 79.6%.</h5>
+</div>
+<div id="to-conclude-for-this-k-nn-model-using-balanaced-data-after-smote-the-specificty-for-the-model-drastically-improves-but-now-the-accuracy-gets-lower." class="section level5">
+<h5>To conclude for this k-NN model using balanaced data after SMOTE, the specificty for the model drastically improves, but now the accuracy gets lower.</h5>
+</div>
+<div id="based-on-the-different-models-used-for-this-analyis-we-will-go-ahead-and-use-logistic-regression-model-which-is-the-best-model-so-far-for-classifying-into-attrition-or-no-attrition." class="section level4">
+<h4>Based on the different models used for this analyis, we will go ahead and use Logistic Regression model, which is the best model so far, for classifying into attrition or no attrition.</h4>
+</div>
+</div>
+<div id="classifying-attrition-for-the-competition-set-for-the-casestudy2compset-no-attrition.csv-file-using-the-logistic-regression-model-on-classification" class="section level3">
+<h3>Classifying Attrition for the “Competition Set” for the “CaseStudy2CompSet No Attrition.csv” file using the Logistic Regression model on classification:</h3>
+<div id="logistic-regression-model-on-classification-attained-more-than-60-sensitivity-and-specificity-60-each-120-total-for-the-training-and-the-validation-set." class="section level5">
+<h5>Logistic Regression model on classification attained more than 60% sensitivity and specificity (60 each = 120 total) for the training and the validation set.</h5>
+<pre class="r"><code># load &quot;Competition Set&quot; on No Attrition dataset
+employeeCompSet = read.csv(file = &quot;C:/Users/seema/Documents/Personal/Study/Data Science at SMU/CaseStudy2CompSet No Attrition.csv&quot;, header = TRUE, sep = &quot;,&quot;)
+dim(employeeCompSet)</code></pre>
+<pre><code>## [1] 300  35</code></pre>
+<pre class="r"><code>head(employeeCompSet,4)</code></pre>
+<pre><code>##     ID Age BusinessTravel DailyRate             Department
+## 1 1171  35  Travel_Rarely       750 Research &amp; Development
+## 2 1172  33  Travel_Rarely       147        Human Resources
+## 3 1173  26  Travel_Rarely      1330 Research &amp; Development
+## 4 1174  55  Travel_Rarely      1311 Research &amp; Development
+##   DistanceFromHome Education  EducationField EmployeeCount EmployeeNumber
+## 1               28         3   Life Sciences             1           1596
+## 2                2         3 Human Resources             1           1207
+## 3               21         3         Medical             1           1107
+## 4                2         3   Life Sciences             1            505
+##   EnvironmentSatisfaction Gender HourlyRate JobInvolvement JobLevel
+## 1                       2   Male         46              4        2
+## 2                       2   Male         99              3        1
+## 3                       1   Male         37              3        1
+## 4                       3 Female         97              3        4
+##                 JobRole JobSatisfaction MaritalStatus MonthlyIncome
+## 1 Laboratory Technician               3       Married          3407
+## 2       Human Resources               3       Married          3600
+## 3 Laboratory Technician               3      Divorced          2377
+## 4               Manager               4        Single         16659
+##   MonthlyRate NumCompaniesWorked Over18 OverTime PercentSalaryHike
+## 1       25348                  1      Y       No                17
+## 2        8429                  1      Y       No                13
+## 3       19373                  1      Y       No                20
+## 4       23258                  2      Y      Yes                13
+##   PerformanceRating RelationshipSatisfaction StandardHours
+## 1                 3                        4            80
+## 2                 3                        4            80
+## 3                 4                        3            80
+## 4                 3                        3            80
+##   StockOptionLevel TotalWorkingYears TrainingTimesLastYear WorkLifeBalance
+## 1                2                10                     3               2
+## 2                1                 5                     2               3
+## 3                1                 1                     0               2
+## 4                0                30                     2               3
+##   YearsAtCompany YearsInCurrentRole YearsSinceLastPromotion
+## 1             10                  9                       6
+## 2              5                  4                       1
+## 3              1                  1                       0
+## 4              5                  4                       1
+##   YearsWithCurrManager
+## 1                    8
+## 2                    4
+## 3                    0
+## 4                    2</code></pre>
+<pre class="r"><code>summary(employeeCompSet)</code></pre>
+<pre><code>##        ID            Age                  BusinessTravel   DailyRate     
+##  Min.   :1171   Min.   :19.00   Non-Travel       : 32    Min.   : 102.0  
+##  1st Qu.:1246   1st Qu.:31.00   Travel_Frequently: 57    1st Qu.: 448.0  
+##  Median :1320   Median :36.00   Travel_Rarely    :211    Median : 775.0  
+##  Mean   :1320   Mean   :37.86                            Mean   : 784.8  
+##  3rd Qu.:1395   3rd Qu.:44.00                            3rd Qu.:1117.0  
+##  Max.   :1470   Max.   :60.00                            Max.   :1490.0  
+##                                                                          
+##                   Department  DistanceFromHome   Education    
+##  Human Resources       : 11   Min.   : 1.00    Min.   :1.000  
+##  Research &amp; Development:209   1st Qu.: 2.00    1st Qu.:2.000  
+##  Sales                 : 80   Median : 7.00    Median :3.000  
+##                               Mean   : 9.26    Mean   :2.973  
+##                               3rd Qu.:14.00    3rd Qu.:4.000  
+##                               Max.   :29.00    Max.   :5.000  
+##                                                               
+##           EducationField EmployeeCount EmployeeNumber  
+##  Human Resources :  7    Min.   :1     Min.   :   2.0  
+##  Life Sciences   :130    1st Qu.:1     1st Qu.: 508.8  
+##  Marketing       : 27    Median :1     Median : 994.5  
+##  Medical         : 94    Mean   :1     Mean   :1020.9  
+##  Other           : 12    3rd Qu.:1     3rd Qu.:1542.5  
+##  Technical Degree: 30    Max.   :1     Max.   :2065.0  
+##                                                        
+##  EnvironmentSatisfaction    Gender      HourlyRate     JobInvolvement 
+##  Min.   :1.000           Female:105   Min.   : 30.00   Min.   :1.000  
+##  1st Qu.:2.000           Male  :195   1st Qu.: 50.00   1st Qu.:2.000  
+##  Median :3.000                        Median : 66.00   Median :3.000  
+##  Mean   :2.733                        Mean   : 66.07   Mean   :2.743  
+##  3rd Qu.:4.000                        3rd Qu.: 83.00   3rd Qu.:3.000  
+##  Max.   :4.000                        Max.   :100.00   Max.   :4.000  
+##                                                                       
+##     JobLevel                        JobRole   JobSatisfaction
+##  Min.   :1.0   Research Scientist       :61   Min.   :1.000  
+##  1st Qu.:1.0   Sales Executive          :57   1st Qu.:2.000  
+##  Median :2.0   Laboratory Technician    :55   Median :3.000  
+##  Mean   :2.2   Manufacturing Director   :31   Mean   :2.767  
+##  3rd Qu.:3.0   Manager                  :30   3rd Qu.:4.000  
+##  Max.   :5.0   Healthcare Representative:29   Max.   :4.000  
+##                (Other)                  :37                  
+##   MaritalStatus MonthlyIncome    MonthlyRate    NumCompaniesWorked Over18 
+##  Divorced: 65   Min.   : 1232   Min.   : 2097   Min.   :0.000      Y:300  
+##  Married :128   1st Qu.: 3034   1st Qu.: 8420   1st Qu.:1.000             
+##  Single  :107   Median : 5208   Median :15091   Median :2.000             
+##                 Mean   : 7103   Mean   :14499   Mean   :2.547             
+##                 3rd Qu.: 9750   3rd Qu.:20330   3rd Qu.:4.000             
+##                 Max.   :19973   Max.   :26914   Max.   :9.000             
+##                                                                           
+##  OverTime  PercentSalaryHike PerformanceRating RelationshipSatisfaction
+##  No :212   Min.   :11.00     Min.   :3.000     Min.   :1.000           
+##  Yes: 88   1st Qu.:12.00     1st Qu.:3.000     1st Qu.:2.000           
+##            Median :14.00     Median :3.000     Median :3.000           
+##            Mean   :15.17     Mean   :3.153     Mean   :2.803           
+##            3rd Qu.:18.00     3rd Qu.:3.000     3rd Qu.:4.000           
+##            Max.   :25.00     Max.   :4.000     Max.   :4.000           
+##                                                                        
+##  StandardHours StockOptionLevel TotalWorkingYears TrainingTimesLastYear
+##  Min.   :80    Min.   :0.0000   Min.   : 0.00     Min.   :0.000        
+##  1st Qu.:80    1st Qu.:0.0000   1st Qu.: 6.00     1st Qu.:2.000        
+##  Median :80    Median :1.0000   Median :10.00     Median :2.000        
+##  Mean   :80    Mean   :0.7833   Mean   :12.44     Mean   :2.683        
+##  3rd Qu.:80    3rd Qu.:1.0000   3rd Qu.:18.00     3rd Qu.:3.000        
+##  Max.   :80    Max.   :3.0000   Max.   :38.00     Max.   :6.000        
+##                                                                        
+##  WorkLifeBalance YearsAtCompany   YearsInCurrentRole
+##  Min.   :1.000   Min.   : 0.000   Min.   : 0.00     
+##  1st Qu.:2.000   1st Qu.: 3.000   1st Qu.: 2.00     
+##  Median :3.000   Median : 5.000   Median : 3.00     
+##  Mean   :2.747   Mean   : 7.527   Mean   : 4.33     
+##  3rd Qu.:3.000   3rd Qu.:10.000   3rd Qu.: 7.00     
+##  Max.   :4.000   Max.   :37.000   Max.   :18.00     
+##                                                     
+##  YearsSinceLastPromotion YearsWithCurrManager
+##  Min.   : 0.00           Min.   : 0.00       
+##  1st Qu.: 0.00           1st Qu.: 2.00       
+##  Median : 1.00           Median : 3.00       
+##  Mean   : 2.29           Mean   : 4.38       
+##  3rd Qu.: 3.00           3rd Qu.: 7.00       
+##  Max.   :15.00           Max.   :17.00       
+## </code></pre>
+<pre class="r"><code>#check for NA values
+table(is.na(employeeCompSet))</code></pre>
+<pre><code>## 
+## FALSE 
+## 10500</code></pre>
+<pre class="r"><code>#Checking the missing value
+sapply(employeeCompSet, function(x) sum(is.na(x)))</code></pre>
+<pre><code>##                       ID                      Age           BusinessTravel 
+##                        0                        0                        0 
+##                DailyRate               Department         DistanceFromHome 
+##                        0                        0                        0 
+##                Education           EducationField            EmployeeCount 
+##                        0                        0                        0 
+##           EmployeeNumber  EnvironmentSatisfaction                   Gender 
+##                        0                        0                        0 
+##               HourlyRate           JobInvolvement                 JobLevel 
+##                        0                        0                        0 
+##                  JobRole          JobSatisfaction            MaritalStatus 
+##                        0                        0                        0 
+##            MonthlyIncome              MonthlyRate       NumCompaniesWorked 
+##                        0                        0                        0 
+##                   Over18                 OverTime        PercentSalaryHike 
+##                        0                        0                        0 
+##        PerformanceRating RelationshipSatisfaction            StandardHours 
+##                        0                        0                        0 
+##         StockOptionLevel        TotalWorkingYears    TrainingTimesLastYear 
+##                        0                        0                        0 
+##          WorkLifeBalance           YearsAtCompany       YearsInCurrentRole 
+##                        0                        0                        0 
+##  YearsSinceLastPromotion     YearsWithCurrManager 
+##                        0                        0</code></pre>
+<pre class="r"><code>#check for duplicated values
+sum(duplicated(employeeCompSet)) </code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre class="r"><code>#see data frame dimensions and column data types
+#str(employeeCompSet)
+
+# remove some variable whose value is not changing. So standard deviation of that variable is zero. So it is not Significant for analysis. Those variable are ID, Employee Count, Employee Number, Over18, StandardHours
+employeeCompSetReduceCols &lt;- employeeCompSet[, -c(1,9,10,22,27)]
+
+employeeCompSet2 &lt;- employeeCompSetReduceCols
+# Changing the class of variable from numeric to factor
+employeeCompSet2$Education &lt;- factor(employeeCompSet2$Education)
+employeeCompSet2$EnvironmentSatisfaction &lt;- factor(employeeCompSet2$EnvironmentSatisfaction)
+employeeCompSet2$JobInvolvement &lt;- factor(employeeCompSet2$JobInvolvement)
+employeeCompSet2$JobLevel &lt;- factor(employeeCompSet2$JobLevel)
+employeeCompSet2$JobSatisfaction &lt;- factor(employeeCompSet2$JobSatisfaction)
+employeeCompSet2$PerformanceRating &lt;- factor(employeeCompSet2$PerformanceRating)
+employeeCompSet2$RelationshipSatisfaction &lt;- factor(employeeCompSet2$RelationshipSatisfaction)
+employeeCompSet2$StockOptionLevel &lt;- factor(employeeCompSet2$StockOptionLevel)
+employeeCompSet2$WorkLifeBalance &lt;- factor(employeeCompSet2$WorkLifeBalance)
+
+# Changing the categorical variables to dummy variable so that the variables can be used for fit in the classification model
+dmy &lt;- dummyVars(&quot; ~ .&quot;, data = employeeCompSet2, fullRank=T)
+employeeCompSet3 &lt;- data.frame(predict(dmy, newdata = employeeCompSet2))
+print(str(employeeCompSet3))</code></pre>
+<pre><code>## &#39;data.frame&#39;:    300 obs. of  62 variables:
+##  $ Age                              : num  35 33 26 55 29 51 52 39 31 31 ...
+##  $ BusinessTravel.Travel_Frequently : num  0 0 0 0 0 1 0 0 0 1 ...
+##  $ BusinessTravel.Travel_Rarely     : num  1 1 1 1 1 0 0 1 1 0 ...
+##  $ DailyRate                        : num  750 147 1330 1311 1246 ...
+##  $ Department.Research...Development: num  1 0 1 1 0 1 0 1 1 1 ...
+##  $ Department.Sales                 : num  0 0 0 0 1 0 1 0 0 0 ...
+##  $ DistanceFromHome                 : num  28 2 21 2 19 1 29 10 24 20 ...
+##  $ Education.2                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ Education.3                      : num  1 1 1 1 1 0 0 0 1 1 ...
+##  $ Education.4                      : num  0 0 0 0 0 1 1 0 0 0 ...
+##  $ Education.5                      : num  0 0 0 0 0 0 0 1 0 0 ...
+##  $ EducationField.Life.Sciences     : num  1 0 0 1 1 0 1 0 0 1 ...
+##  $ EducationField.Marketing         : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ EducationField.Medical           : num  0 0 1 0 0 1 0 1 1 0 ...
+##  $ EducationField.Other             : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ EducationField.Technical.Degree  : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ EnvironmentSatisfaction.2        : num  1 1 0 0 0 0 0 1 0 0 ...
+##  $ EnvironmentSatisfaction.3        : num  0 0 0 1 1 0 0 0 1 0 ...
+##  $ EnvironmentSatisfaction.4        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ Gender.Male                      : num  1 1 1 0 1 0 1 1 0 1 ...
+##  $ HourlyRate                       : num  46 99 37 97 77 30 40 76 96 66 ...
+##  $ JobInvolvement.2                 : num  0 0 0 0 1 1 0 0 1 0 ...
+##  $ JobInvolvement.3                 : num  0 1 1 1 0 0 1 1 0 1 ...
+##  $ JobInvolvement.4                 : num  1 0 0 0 0 0 0 0 0 0 ...
+##  $ JobLevel.2                       : num  1 0 0 0 1 0 0 1 1 0 ...
+##  $ JobLevel.3                       : num  0 0 0 0 0 1 0 0 0 1 ...
+##  $ JobLevel.4                       : num  0 0 0 1 0 0 0 0 0 0 ...
+##  $ JobLevel.5                       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ JobRole.Human.Resources          : num  0 1 0 0 0 0 0 0 0 0 ...
+##  $ JobRole.Laboratory.Technician    : num  1 0 1 0 0 0 0 0 0 0 ...
+##  $ JobRole.Manager                  : num  0 0 0 1 0 0 0 0 0 0 ...
+##  $ JobRole.Manufacturing.Director   : num  0 0 0 0 0 0 0 1 0 0 ...
+##  $ JobRole.Research.Director        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ JobRole.Research.Scientist       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ JobRole.Sales.Executive          : num  0 0 0 0 1 0 0 0 0 0 ...
+##  $ JobRole.Sales.Representative     : num  0 0 0 0 0 0 1 0 0 0 ...
+##  $ JobSatisfaction.2                : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ JobSatisfaction.3                : num  1 1 1 0 1 0 0 0 0 1 ...
+##  $ JobSatisfaction.4                : num  0 0 0 1 0 0 1 0 0 0 ...
+##  $ MaritalStatus.Married            : num  1 1 0 0 0 0 0 1 0 1 ...
+##  $ MaritalStatus.Single             : num  0 0 0 1 0 1 0 0 1 0 ...
+##  $ MonthlyIncome                    : num  3407 3600 2377 16659 8620 ...
+##  $ MonthlyRate                      : num  25348 8429 19373 23258 23757 ...
+##  $ NumCompaniesWorked               : num  1 1 1 2 1 3 2 2 1 3 ...
+##  $ OverTime.Yes                     : num  0 0 0 1 0 0 0 0 0 0 ...
+##  $ PercentSalaryHike                : num  17 13 20 13 14 20 15 13 19 12 ...
+##  $ PerformanceRating.4              : num  0 0 1 0 0 1 0 0 0 0 ...
+##  $ RelationshipSatisfaction.2       : num  0 0 0 0 0 0 1 0 1 0 ...
+##  $ RelationshipSatisfaction.3       : num  0 0 1 1 1 1 0 0 0 0 ...
+##  $ RelationshipSatisfaction.4       : num  1 1 0 0 0 0 0 1 0 0 ...
+##  $ StockOptionLevel.1               : num  0 1 1 0 0 0 0 0 0 0 ...
+##  $ StockOptionLevel.2               : num  1 0 0 0 1 0 1 0 0 0 ...
+##  $ StockOptionLevel.3               : num  0 0 0 0 0 0 0 1 0 0 ...
+##  $ TotalWorkingYears                : num  10 5 1 30 10 23 16 10 10 12 ...
+##  $ TrainingTimesLastYear            : num  3 2 0 2 3 1 3 3 2 2 ...
+##  $ WorkLifeBalance.2                : num  1 0 1 0 0 1 1 0 0 0 ...
+##  $ WorkLifeBalance.3                : num  0 1 0 1 1 0 0 1 1 1 ...
+##  $ WorkLifeBalance.4                : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ YearsAtCompany                   : num  10 5 1 5 10 13 9 7 10 1 ...
+##  $ YearsInCurrentRole               : num  9 4 1 4 7 12 8 7 9 0 ...
+##  $ YearsSinceLastPromotion          : num  6 1 0 1 0 12 0 7 1 0 ...
+##  $ YearsWithCurrManager             : num  8 4 0 2 4 8 0 7 8 0 ...
+## NULL</code></pre>
+<pre class="r"><code>validationdata2 &lt;- employeeCompSet3
+
+# Accessing the predictive ability of the logistic regression model
+log_pred &lt;- predict(logmodel,newdata=validationdata2,type=&#39;response&#39;)
+log_pred &lt;- ifelse(log_pred&gt;=0.5,1,0)
+# merge predicted variable to the CompSet file
+mergedataemployeeCompSet &lt;- merge(employeeCompSet$ID, log_pred, by=0, all=TRUE) 
+#dim(mergedataemployeeCompSet)
+#head(mergedataemployeeCompSet,2)
+
+mergedataemployeeCompSet$y &lt;- ifelse(mergedataemployeeCompSet$y == 1,&quot;Yes&quot;,&quot;No&quot;)
+colnames(mergedataemployeeCompSet)[colnames(mergedataemployeeCompSet)==&quot;Row.names&quot;] &lt;- &quot;RowNumber&quot;
+colnames(mergedataemployeeCompSet)[colnames(mergedataemployeeCompSet)==&quot;x&quot;] &lt;- &quot;ID&quot;
+colnames(mergedataemployeeCompSet)[colnames(mergedataemployeeCompSet)==&quot;y&quot;] &lt;- &quot;Attrition&quot;
+classifyemployeeCompSet &lt;- mergedataemployeeCompSet[order(mergedataemployeeCompSet$ID),] %&gt;% dplyr::select(ID, Attrition)
+#dim(classifyemployeeCompSet)
+# write to csv file for classifying dataset for the &quot;Competition Set&quot; on Attrition
+write.csv(classifyemployeeCompSet, file = &quot;Case2PredictionsSrivastava Attrition.csv&quot;, row.names=FALSE)</code></pre>
+</div>
+</div>
+<div id="predicting-monthly-incomes-for-the-casestudy2compset-no-salary.csv-file-using-the-linear-regression-model" class="section level3">
+<h3>Predicting Monthly Incomes for the “CaseStudy2CompSet No Salary.csv” file using the Linear Regression model:</h3>
+<div id="linear-regression-model-on-prediting-the-monthly-income-attained-a-rmse-3000-for-the-training-and-the-validation-set." class="section level5">
+<h5>Linear Regression model on prediting the monthly income attained a RMSE &lt; $3000 for the training and the validation set.</h5>
+<pre class="r"><code>## Linear Regression model
+
+#Split data into train and test using cross validation in ratio of 70% train and 30% test
+set.seed(2017)
+train &lt;- sample(1:nrow(employee3), nrow(employee3)*.7)
+test = -train
+modeldata &lt;- employee3[train,]
+validationdata &lt;- employee3[test,]
+cat(&quot;Train data has&quot;, nrow(modeldata),&quot;observations&quot;)</code></pre>
+<pre><code>## Train data has 609 observations</code></pre>
+<pre class="r"><code>cat(&quot;Test data has&quot;, nrow(validationdata),&quot;observations&quot;)</code></pre>
+<pre><code>## Test data has 261 observations</code></pre>
+<pre class="r"><code># Fit the Linear Regression model for predicting monthly incomes (salaries)
+Model1_fit = lm(MonthlyIncome~., data = modeldata)
+summary(Model1_fit)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = MonthlyIncome ~ ., data = modeldata)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3157.3  -567.3   -44.7   543.7  4409.8 
+## 
+## Coefficients:
+##                                     Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)                        2.525e+03  8.369e+02   3.017 0.002673
+## Age                                1.225e+00  6.650e+00   0.184 0.853938
+## Attrition                         -1.355e+02  1.347e+02  -1.006 0.314948
+## BusinessTravel.Travel_Frequently   3.117e+02  1.629e+02   1.914 0.056188
+## BusinessTravel.Travel_Rarely       4.563e+02  1.383e+02   3.298 0.001036
+## DailyRate                          1.888e-01  1.056e-01   1.788 0.074307
+## Department.Research...Development  2.565e+02  6.071e+02   0.423 0.672811
+## Department.Sales                  -2.744e+02  6.359e+02  -0.432 0.666273
+## DistanceFromHome                  -7.556e+00  5.286e+00  -1.429 0.153482
+## Education.2                       -9.050e+01  1.540e+02  -0.588 0.557002
+## Education.3                       -1.947e+02  1.386e+02  -1.405 0.160547
+## Education.4                        1.564e+01  1.498e+02   0.104 0.916910
+## Education.5                       -6.566e+02  2.844e+02  -2.309 0.021335
+## EducationField.Life.Sciences       1.041e+02  4.304e+02   0.242 0.809052
+## EducationField.Marketing           1.798e+02  4.550e+02   0.395 0.692777
+## EducationField.Medical             8.460e+01  4.318e+02   0.196 0.844740
+## EducationField.Other               5.163e+01  4.584e+02   0.113 0.910364
+## EducationField.Technical.Degree    1.651e+02  4.526e+02   0.365 0.715444
+## EnvironmentSatisfaction.2         -2.565e+01  1.309e+02  -0.196 0.844695
+## EnvironmentSatisfaction.3         -1.021e+02  1.208e+02  -0.846 0.398052
+## EnvironmentSatisfaction.4         -1.028e+02  1.224e+02  -0.840 0.401000
+## Gender.Male                        1.377e+02  8.511e+01   1.617 0.106367
+## HourlyRate                         5.521e-01  2.062e+00   0.268 0.789005
+## JobInvolvement.2                  -1.197e+02  1.850e+02  -0.647 0.517712
+## JobInvolvement.3                  -2.117e+02  1.765e+02  -1.199 0.230969
+## JobInvolvement.4                   1.143e+01  2.140e+02   0.053 0.957437
+## JobLevel.2                         1.798e+03  1.830e+02   9.823  &lt; 2e-16
+## JobLevel.3                         5.089e+03  2.327e+02  21.868  &lt; 2e-16
+## JobLevel.4                         8.536e+03  3.431e+02  24.876  &lt; 2e-16
+## JobLevel.5                         1.111e+04  4.098e+02  27.109  &lt; 2e-16
+## JobRole.Human.Resources           -4.738e+02  6.498e+02  -0.729 0.466194
+## JobRole.Laboratory.Technician     -1.119e+03  2.200e+02  -5.087 5.00e-07
+## JobRole.Manager                    3.584e+03  3.227e+02  11.108  &lt; 2e-16
+## JobRole.Manufacturing.Director     1.101e+02  1.923e+02   0.572 0.567337
+## JobRole.Research.Director          3.487e+03  2.540e+02  13.730  &lt; 2e-16
+## JobRole.Research.Scientist        -9.030e+02  2.240e+02  -4.031 6.33e-05
+## JobRole.Sales.Executive            4.245e+02  4.018e+02   1.056 0.291225
+## JobRole.Sales.Representative      -6.677e+02  4.598e+02  -1.452 0.146981
+## JobSatisfaction.2                 -1.288e+02  1.338e+02  -0.963 0.336173
+## JobSatisfaction.3                  5.170e+01  1.206e+02   0.429 0.668376
+## JobSatisfaction.4                  7.122e+01  1.191e+02   0.598 0.549947
+## MaritalStatus.Married              1.332e+02  1.143e+02   1.166 0.244115
+## MaritalStatus.Single               1.628e+02  1.736e+02   0.938 0.348695
+## MonthlyRate                       -8.087e-03  5.885e-03  -1.374 0.169933
+## NumCompaniesWorked                 1.992e+01  1.952e+01   1.021 0.307834
+## OverTime.Yes                       4.279e+01  9.620e+01   0.445 0.656677
+## PercentSalaryHike                  1.121e+01  1.800e+01   0.623 0.533614
+## PerformanceRating.4               -1.649e+02  1.852e+02  -0.891 0.373536
+## RelationshipSatisfaction.2         1.224e+02  1.325e+02   0.923 0.356228
+## RelationshipSatisfaction.3         1.240e+01  1.217e+02   0.102 0.918882
+## RelationshipSatisfaction.4         5.423e+00  1.198e+02   0.045 0.963913
+## StockOptionLevel.1                 1.202e+01  1.363e+02   0.088 0.929790
+## StockOptionLevel.2                 9.864e+01  1.844e+02   0.535 0.592888
+## StockOptionLevel.3                -4.301e+00  2.132e+02  -0.020 0.983912
+## TotalWorkingYears                  4.557e+01  1.293e+01   3.523 0.000462
+## TrainingTimesLastYear              3.189e+01  3.400e+01   0.938 0.348666
+## WorkLifeBalance.2                  8.843e+00  2.024e+02   0.044 0.965173
+## WorkLifeBalance.3                  6.707e+00  1.911e+02   0.035 0.972014
+## WorkLifeBalance.4                 -1.012e+02  2.215e+02  -0.457 0.647919
+## YearsAtCompany                    -5.352e+00  1.591e+01  -0.336 0.736683
+## YearsInCurrentRole                 6.226e+00  1.962e+01   0.317 0.751129
+## YearsSinceLastPromotion            1.782e+01  1.776e+01   1.003 0.316104
+## YearsWithCurrManager              -1.306e+01  1.920e+01  -0.680 0.496719
+##                                      
+## (Intercept)                       ** 
+## Age                                  
+## Attrition                            
+## BusinessTravel.Travel_Frequently  .  
+## BusinessTravel.Travel_Rarely      ** 
+## DailyRate                         .  
+## Department.Research...Development    
+## Department.Sales                     
+## DistanceFromHome                     
+## Education.2                          
+## Education.3                          
+## Education.4                          
+## Education.5                       *  
+## EducationField.Life.Sciences         
+## EducationField.Marketing             
+## EducationField.Medical               
+## EducationField.Other                 
+## EducationField.Technical.Degree      
+## EnvironmentSatisfaction.2            
+## EnvironmentSatisfaction.3            
+## EnvironmentSatisfaction.4            
+## Gender.Male                          
+## HourlyRate                           
+## JobInvolvement.2                     
+## JobInvolvement.3                     
+## JobInvolvement.4                     
+## JobLevel.2                        ***
+## JobLevel.3                        ***
+## JobLevel.4                        ***
+## JobLevel.5                        ***
+## JobRole.Human.Resources              
+## JobRole.Laboratory.Technician     ***
+## JobRole.Manager                   ***
+## JobRole.Manufacturing.Director       
+## JobRole.Research.Director         ***
+## JobRole.Research.Scientist        ***
+## JobRole.Sales.Executive              
+## JobRole.Sales.Representative         
+## JobSatisfaction.2                    
+## JobSatisfaction.3                    
+## JobSatisfaction.4                    
+## MaritalStatus.Married                
+## MaritalStatus.Single                 
+## MonthlyRate                          
+## NumCompaniesWorked                   
+## OverTime.Yes                         
+## PercentSalaryHike                    
+## PerformanceRating.4                  
+## RelationshipSatisfaction.2           
+## RelationshipSatisfaction.3           
+## RelationshipSatisfaction.4           
+## StockOptionLevel.1                   
+## StockOptionLevel.2                   
+## StockOptionLevel.3                   
+## TotalWorkingYears                 ***
+## TrainingTimesLastYear                
+## WorkLifeBalance.2                    
+## WorkLifeBalance.3                    
+## WorkLifeBalance.4                    
+## YearsAtCompany                       
+## YearsInCurrentRole                   
+## YearsSinceLastPromotion              
+## YearsWithCurrManager                 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 986.9 on 546 degrees of freedom
+## Multiple R-squared:  0.9584, Adjusted R-squared:  0.9536 
+## F-statistic: 202.7 on 62 and 546 DF,  p-value: &lt; 2.2e-16</code></pre>
+<pre class="r"><code>#confint(Model1_fit)
+
+Model1_Preds = predict(Model1_fit, newdata = validationdata)
+#Accuracy Statistics for the Linear Regression model
+#MSE for the Linear Regression model
+MSE = mean((validationdata$MonthlyIncome - Model1_Preds)^2)
+MSE</code></pre>
+<pre><code>## [1] 1200291</code></pre>
+<pre class="r"><code>#RMSE (Root Mean square error) for the Linear Regression model
+RMSE = sqrt(MSE)
+RMSE</code></pre>
+<pre><code>## [1] 1095.578</code></pre>
+<pre class="r"><code># load &quot;Competition Set&quot; on No Monthly Incomes dataset having no Salary
+MonthlyIncomeCompSet = read.csv(file = &quot;C:/Users/seema/Documents/Personal/Study/Data Science at SMU/CaseStudy2CompSetNoSalary.csv&quot;, header = TRUE, sep = &quot;,&quot;)
+dim(MonthlyIncomeCompSet)</code></pre>
+<pre><code>## [1] 300  35</code></pre>
+<pre class="r"><code>head(MonthlyIncomeCompSet,4)</code></pre>
+<pre><code>##    ID Age Attrition    BusinessTravel DailyRate             Department
+## 1 871  43        No Travel_Frequently      1422                  Sales
+## 2 872  33        No     Travel_Rarely       461 Research &amp; Development
+## 3 873  55       Yes     Travel_Rarely       267                  Sales
+## 4 874  36        No        Non-Travel      1351 Research &amp; Development
+##   DistanceFromHome Education EducationField EmployeeCount EmployeeNumber
+## 1                2         4  Life Sciences             1           1849
+## 2               13         1  Life Sciences             1            995
+## 3               13         4      Marketing             1           1372
+## 4                9         4  Life Sciences             1           1949
+##   EnvironmentSatisfaction Gender HourlyRate JobInvolvement JobLevel
+## 1                       1   Male         92              3        2
+## 2                       2 Female         53              3        1
+## 3                       1   Male         85              4        4
+## 4                       1   Male         66              4        1
+##                 JobRole JobSatisfaction MaritalStatus MonthlyRate
+## 1       Sales Executive               4       Married       19246
+## 2    Research Scientist               4        Single       17241
+## 3       Sales Executive               3        Single        9277
+## 4 Laboratory Technician               2       Married        9238
+##   NumCompaniesWorked Over18 OverTime PercentSalaryHike PerformanceRating
+## 1                  1      Y       No                20                 4
+## 2                  3      Y       No                18                 3
+## 3                  6      Y      Yes                17                 3
+## 4                  1      Y       No                22                 4
+##   RelationshipSatisfaction StandardHours StockOptionLevel
+## 1                        3            80                1
+## 2                        1            80                0
+## 3                        3            80                0
+## 4                        2            80                0
+##   TotalWorkingYears TrainingTimesLastYear WorkLifeBalance YearsAtCompany
+## 1                 7                     5               3              7
+## 2                 5                     4               3              3
+## 3                24                     2               2             19
+## 4                 5                     3               3              5
+##   YearsInCurrentRole YearsSinceLastPromotion YearsWithCurrManager
+## 1                  7                       7                    7
+## 2                  2                       0                    2
+## 3                  7                       3                    8
+## 4                  4                       0                    2</code></pre>
+<pre class="r"><code>summary(MonthlyIncomeCompSet)</code></pre>
+<pre><code>##        ID              Age        Attrition           BusinessTravel
+##  Min.   : 871.0   Min.   :18.00   No :249   Non-Travel       : 24   
+##  1st Qu.: 945.8   1st Qu.:29.00   Yes: 51   Travel_Frequently: 62   
+##  Median :1020.5   Median :36.00             Travel_Rarely    :214   
+##  Mean   :1020.5   Mean   :36.27                                     
+##  3rd Qu.:1095.2   3rd Qu.:42.00                                     
+##  Max.   :1170.0   Max.   :60.00                                     
+##                                                                     
+##    DailyRate                       Department  DistanceFromHome
+##  Min.   : 105.0   Human Resources       : 17   Min.   : 1.00   
+##  1st Qu.: 429.2   Research &amp; Development:190   1st Qu.: 2.00   
+##  Median : 693.0   Sales                 : 93   Median : 7.00   
+##  Mean   : 783.2                                Mean   : 8.70   
+##  3rd Qu.:1171.2                                3rd Qu.:11.25   
+##  Max.   :1492.0                                Max.   :29.00   
+##                                                                
+##    Education              EducationField EmployeeCount EmployeeNumber
+##  Min.   :1.000   Human Resources :  5    Min.   :1     Min.   :   7  
+##  1st Qu.:2.000   Life Sciences   :118    1st Qu.:1     1st Qu.: 477  
+##  Median :3.000   Marketing       : 32    Median :1     Median :1008  
+##  Mean   :2.887   Medical         :100    Mean   :1     Mean   :1014  
+##  3rd Qu.:4.000   Other           : 18    3rd Qu.:1     3rd Qu.:1569  
+##  Max.   :5.000   Technical Degree: 27    Max.   :1     Max.   :2068  
+##                                                                      
+##  EnvironmentSatisfaction    Gender      HourlyRate     JobInvolvement 
+##  Min.   :1.00            Female:129   Min.   : 30.00   Min.   :1.000  
+##  1st Qu.:2.00            Male  :171   1st Qu.: 48.00   1st Qu.:2.000  
+##  Median :3.00                         Median : 66.00   Median :3.000  
+##  Mean   :2.77                         Mean   : 66.52   Mean   :2.737  
+##  3rd Qu.:4.00                         3rd Qu.: 85.25   3rd Qu.:3.000  
+##  Max.   :4.00                         Max.   :100.00   Max.   :4.000  
+##                                                                       
+##     JobLevel                      JobRole   JobSatisfaction  MaritalStatus
+##  Min.   :1   Sales Executive          :69   Min.   :1.000   Divorced: 71  
+##  1st Qu.:1   Research Scientist       :59   1st Qu.:2.000   Married :135  
+##  Median :2   Laboratory Technician    :51   Median :3.000   Single  : 94  
+##  Mean   :2   Manufacturing Director   :27   Mean   :2.747                 
+##  3rd Qu.:2   Healthcare Representative:26   3rd Qu.:4.000                 
+##  Max.   :5   Manager                  :21   Max.   :4.000                 
+##              (Other)                  :47                                 
+##   MonthlyRate    NumCompaniesWorked Over18  OverTime  PercentSalaryHike
+##  Min.   : 2122   Min.   :0.00       Y:300   No :224   Min.   :11.00    
+##  1st Qu.: 7778   1st Qu.:1.00               Yes: 76   1st Qu.:12.75    
+##  Median :13508   Median :2.00                         Median :14.00    
+##  Mean   :14091   Mean   :2.74                         Mean   :15.28    
+##  3rd Qu.:20464   3rd Qu.:4.00                         3rd Qu.:18.00    
+##  Max.   :26999   Max.   :9.00                         Max.   :25.00    
+##                                                                        
+##  PerformanceRating RelationshipSatisfaction StandardHours StockOptionLevel
+##  Min.   :3.00      Min.   :1.000            Min.   :80    Min.   :0.0000  
+##  1st Qu.:3.00      1st Qu.:2.000            1st Qu.:80    1st Qu.:0.0000  
+##  Median :3.00      Median :3.000            Median :80    Median :1.0000  
+##  Mean   :3.16      Mean   :2.637            Mean   :80    Mean   :0.8333  
+##  3rd Qu.:3.00      3rd Qu.:4.000            3rd Qu.:80    3rd Qu.:1.0000  
+##  Max.   :4.00      Max.   :4.000            Max.   :80    Max.   :3.0000  
+##                                                                           
+##  TotalWorkingYears TrainingTimesLastYear WorkLifeBalance YearsAtCompany  
+##  Min.   : 0.00     Min.   :0.00          Min.   :1.000   Min.   : 0.000  
+##  1st Qu.: 6.00     1st Qu.:2.00          1st Qu.:2.000   1st Qu.: 3.000  
+##  Median : 9.00     Median :3.00          Median :3.000   Median : 5.000  
+##  Mean   :10.78     Mean   :2.82          Mean   :2.717   Mean   : 6.623  
+##  3rd Qu.:14.00     3rd Qu.:3.00          3rd Qu.:3.000   3rd Qu.: 9.000  
+##  Max.   :40.00     Max.   :6.00          Max.   :4.000   Max.   :33.000  
+##                                                                          
+##  YearsInCurrentRole YearsSinceLastPromotion YearsWithCurrManager
+##  Min.   : 0.0       Min.   : 0.00           Min.   : 0.000      
+##  1st Qu.: 2.0       1st Qu.: 0.00           1st Qu.: 2.000      
+##  Median : 3.0       Median : 1.00           Median : 3.000      
+##  Mean   : 4.2       Mean   : 2.14           Mean   : 3.817      
+##  3rd Qu.: 7.0       3rd Qu.: 3.00           3rd Qu.: 7.000      
+##  Max.   :16.0       Max.   :15.00           Max.   :15.000      
+## </code></pre>
+<pre class="r"><code>#check for NA values
+table(is.na(MonthlyIncomeCompSet))</code></pre>
+<pre><code>## 
+## FALSE 
+## 10500</code></pre>
+<pre class="r"><code>#Checking the missing value
+sapply(MonthlyIncomeCompSet, function(x) sum(is.na(x)))</code></pre>
+<pre><code>##                       ID                      Age                Attrition 
+##                        0                        0                        0 
+##           BusinessTravel                DailyRate               Department 
+##                        0                        0                        0 
+##         DistanceFromHome                Education           EducationField 
+##                        0                        0                        0 
+##            EmployeeCount           EmployeeNumber  EnvironmentSatisfaction 
+##                        0                        0                        0 
+##                   Gender               HourlyRate           JobInvolvement 
+##                        0                        0                        0 
+##                 JobLevel                  JobRole          JobSatisfaction 
+##                        0                        0                        0 
+##            MaritalStatus              MonthlyRate       NumCompaniesWorked 
+##                        0                        0                        0 
+##                   Over18                 OverTime        PercentSalaryHike 
+##                        0                        0                        0 
+##        PerformanceRating RelationshipSatisfaction            StandardHours 
+##                        0                        0                        0 
+##         StockOptionLevel        TotalWorkingYears    TrainingTimesLastYear 
+##                        0                        0                        0 
+##          WorkLifeBalance           YearsAtCompany       YearsInCurrentRole 
+##                        0                        0                        0 
+##  YearsSinceLastPromotion     YearsWithCurrManager 
+##                        0                        0</code></pre>
+<pre class="r"><code>#check for duplicated values
+sum(duplicated(MonthlyIncomeCompSet)) </code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre class="r"><code>#see data frame dimensions and column data types
+#str(employeeCompSet)
+
+# remove some variable whose value is not changing. So standard deviation of that variable is zero. So it is not Significant for analysis. Those variable are ID, Employee Count, Employee Number, Over18, StandardHours
+MonthlyIncomeCompSetReduceCols &lt;- MonthlyIncomeCompSet[, -c(1,10,11,22,27)]
+
+MonthlyIncomeCompSet2 &lt;- MonthlyIncomeCompSetReduceCols
+# Changing the class of variable from numeric to factor
+MonthlyIncomeCompSet2$Education &lt;- factor(MonthlyIncomeCompSet2$Education)
+MonthlyIncomeCompSet2$EnvironmentSatisfaction &lt;- factor(MonthlyIncomeCompSet2$EnvironmentSatisfaction)
+MonthlyIncomeCompSet2$JobInvolvement &lt;- factor(MonthlyIncomeCompSet2$JobInvolvement)
+MonthlyIncomeCompSet2$JobLevel &lt;- factor(MonthlyIncomeCompSet2$JobLevel)
+MonthlyIncomeCompSet2$JobSatisfaction &lt;- factor(MonthlyIncomeCompSet2$JobSatisfaction)
+MonthlyIncomeCompSet2$PerformanceRating &lt;- factor(MonthlyIncomeCompSet2$PerformanceRating)
+MonthlyIncomeCompSet2$RelationshipSatisfaction &lt;- factor(MonthlyIncomeCompSet2$RelationshipSatisfaction)
+MonthlyIncomeCompSet2$StockOptionLevel &lt;- factor(MonthlyIncomeCompSet2$StockOptionLevel)
+MonthlyIncomeCompSet2$WorkLifeBalance &lt;- factor(MonthlyIncomeCompSet2$WorkLifeBalance)
+# Changing the Atrition variable value to 1 for &#39;Yes&#39; and 0 for &#39;No&#39;
+MonthlyIncomeCompSet2$Attrition &lt;- ifelse(MonthlyIncomeCompSet2$Attrition == &quot;Yes&quot;,1,0)
+
+# Changing the categorical variables to dummy variable so that the variables can be used for fit in the prediction model
+dmy &lt;- dummyVars(&quot; ~ .&quot;, data = MonthlyIncomeCompSet2, fullRank=T)
+MonthlyIncomeCompSet3 &lt;- data.frame(predict(dmy, newdata = MonthlyIncomeCompSet2))
+print(str(MonthlyIncomeCompSet3))</code></pre>
+<pre><code>## &#39;data.frame&#39;:    300 obs. of  62 variables:
+##  $ Age                              : num  43 33 55 36 27 39 33 21 30 51 ...
+##  $ Attrition                        : num  0 0 1 0 0 1 0 1 0 0 ...
+##  $ BusinessTravel.Travel_Frequently : num  1 0 0 0 0 0 0 1 1 0 ...
+##  $ BusinessTravel.Travel_Rarely     : num  0 1 1 0 1 1 0 0 0 1 ...
+##  $ DailyRate                        : num  1422 461 267 1351 1302 ...
+##  $ Department.Research...Development: num  0 1 0 1 1 0 0 1 1 1 ...
+##  $ Department.Sales                 : num  1 0 1 0 0 1 1 0 0 0 ...
+##  $ DistanceFromHome                 : num  2 13 13 9 19 5 22 10 23 11 ...
+##  $ Education.2                      : num  0 0 0 0 0 0 1 1 0 1 ...
+##  $ Education.3                      : num  0 0 0 0 1 1 0 0 1 0 ...
+##  $ Education.4                      : num  1 0 1 1 0 0 0 0 0 0 ...
+##  $ Education.5                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ EducationField.Life.Sciences     : num  1 1 0 1 0 0 0 1 1 0 ...
+##  $ EducationField.Marketing         : num  0 0 1 0 0 0 1 0 0 0 ...
+##  $ EducationField.Medical           : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ EducationField.Other             : num  0 0 0 0 1 0 0 0 0 0 ...
+##  $ EducationField.Technical.Degree  : num  0 0 0 0 0 1 0 0 0 1 ...
+##  $ EnvironmentSatisfaction.2        : num  0 1 0 0 0 0 0 0 0 0 ...
+##  $ EnvironmentSatisfaction.3        : num  0 0 0 0 0 0 1 0 0 0 ...
+##  $ EnvironmentSatisfaction.4        : num  0 0 0 0 1 1 0 0 0 1 ...
+##  $ Gender.Male                      : num  1 0 1 1 1 1 1 0 1 0 ...
+##  $ HourlyRate                       : num  92 53 85 66 67 56 95 45 96 82 ...
+##  $ JobInvolvement.2                 : num  0 0 0 0 1 0 0 1 0 1 ...
+##  $ JobInvolvement.3                 : num  1 1 0 0 0 1 1 0 0 0 ...
+##  $ JobInvolvement.4                 : num  0 0 1 1 0 0 0 0 0 0 ...
+##  $ JobLevel.2                       : num  1 0 0 0 0 1 1 0 0 0 ...
+##  $ JobLevel.3                       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ JobLevel.4                       : num  0 0 1 0 0 0 0 0 0 1 ...
+##  $ JobLevel.5                       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ JobRole.Human.Resources          : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ JobRole.Laboratory.Technician    : num  0 0 0 1 1 0 0 1 0 0 ...
+##  $ JobRole.Manager                  : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ JobRole.Manufacturing.Director   : num  0 0 0 0 0 0 0 0 0 1 ...
+##  $ JobRole.Research.Director        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ JobRole.Research.Scientist       : num  0 1 0 0 0 0 0 0 1 0 ...
+##  $ JobRole.Sales.Executive          : num  1 0 1 0 0 0 1 0 0 0 ...
+##  $ JobRole.Sales.Representative     : num  0 0 0 0 0 1 0 0 0 0 ...
+##  $ JobSatisfaction.2                : num  0 0 0 1 0 0 1 0 0 1 ...
+##  $ JobSatisfaction.3                : num  0 0 1 0 0 0 0 1 1 0 ...
+##  $ JobSatisfaction.4                : num  1 1 0 0 0 1 0 0 0 0 ...
+##  $ MaritalStatus.Married            : num  1 0 0 1 0 1 1 0 0 0 ...
+##  $ MaritalStatus.Single             : num  0 1 1 0 0 0 0 1 0 1 ...
+##  $ MonthlyRate                      : num  19246 17241 9277 9238 16290 ...
+##  $ NumCompaniesWorked               : num  1 3 6 1 1 3 0 1 1 3 ...
+##  $ OverTime.Yes                     : num  0 0 1 0 0 0 0 0 0 0 ...
+##  $ PercentSalaryHike                : num  20 18 17 22 11 14 13 20 25 16 ...
+##  $ PerformanceRating.4              : num  1 0 0 1 0 0 0 1 1 0 ...
+##  $ RelationshipSatisfaction.2       : num  0 0 0 1 0 0 0 0 0 1 ...
+##  $ RelationshipSatisfaction.3       : num  1 0 1 0 0 1 0 1 1 0 ...
+##  $ RelationshipSatisfaction.4       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ StockOptionLevel.1               : num  1 0 0 0 0 1 1 0 0 0 ...
+##  $ StockOptionLevel.2               : num  0 0 0 0 1 0 0 0 0 0 ...
+##  $ StockOptionLevel.3               : num  0 0 0 0 0 0 0 0 1 0 ...
+##  $ TotalWorkingYears                : num  7 5 24 5 7 19 8 2 10 29 ...
+##  $ TrainingTimesLastYear            : num  5 4 2 3 3 6 2 2 2 1 ...
+##  $ WorkLifeBalance.2                : num  0 0 1 0 0 0 0 0 1 1 ...
+##  $ WorkLifeBalance.3                : num  1 1 0 1 1 0 0 0 0 0 ...
+##  $ WorkLifeBalance.4                : num  0 0 0 0 0 1 1 0 0 0 ...
+##  $ YearsAtCompany                   : num  7 3 19 5 7 1 7 2 10 5 ...
+##  $ YearsInCurrentRole               : num  7 2 7 4 7 0 7 2 7 2 ...
+##  $ YearsSinceLastPromotion          : num  7 0 3 0 0 0 0 2 0 0 ...
+##  $ YearsWithCurrManager             : num  7 2 8 2 7 0 7 2 9 3 ...
+## NULL</code></pre>
+<pre class="r"><code>validationdata2 &lt;- MonthlyIncomeCompSet3
+
+# Accessing the predictive ability of the Linear Regression model on the CompSet dataset
+MonthlyIncomeCompSet_preds &lt;- predict(Model1_fit, newdata = validationdata2)
+# merge predicted Monthly Income variable to the CompSet file
+mergedataMonthlyIncomeCompSet &lt;- merge(MonthlyIncomeCompSet$ID, MonthlyIncomeCompSet_preds, by=0, all=TRUE) 
+#dim(mergedataMonthlyIncomeCompSet)
+#head(mergedataMonthlyIncomeCompSet,2)
+# renaming the merged variable names
+colnames(mergedataMonthlyIncomeCompSet)[colnames(mergedataMonthlyIncomeCompSet)==&quot;Row.names&quot;] &lt;- &quot;RowNumber&quot;
+colnames(mergedataMonthlyIncomeCompSet)[colnames(mergedataMonthlyIncomeCompSet)==&quot;x&quot;] &lt;- &quot;ID&quot;
+colnames(mergedataMonthlyIncomeCompSet)[colnames(mergedataMonthlyIncomeCompSet)==&quot;y&quot;] &lt;- &quot;MonthlyIncome&quot;
+predictMonthlyIncomeCompSet &lt;- mergedataMonthlyIncomeCompSet[order(mergedataMonthlyIncomeCompSet$ID),] %&gt;% dplyr::select(ID, MonthlyIncome)
+#dim(predictMonthlyIncomeCompSet)
+#head(predictMonthlyIncomeCompSet,2)
+# write to csv file for predicting dataset for the &quot;Competition Set&quot; on Monthly Income
+write.csv(predictMonthlyIncomeCompSet, file = &quot;Case2PredictionsSrivastava Salary.csv&quot;, row.names=FALSE)</code></pre>
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

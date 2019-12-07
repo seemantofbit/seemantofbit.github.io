@@ -4,5 +4,7 @@ navbar:
   left:
     - text: "About Me"
       href: index.html
-    - text: "Beer Study"
+    - text: "Case Study1 on Beer"
       href: Beer-Study.html
+    - text: "Case Study2 on Attrition"
+      href: RMarkdown_CaseStudy2.html
